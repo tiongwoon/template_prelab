@@ -1,38 +1,109 @@
-.App {
-  text-align: center;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.5;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.hoverBuddy:hover {
+  box-shadow: 0px 0px 35px -8px #FFD545;
+  height: 3.5em;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.hoverBuddy {
+  display: block;
+  font-size: 1em;
+  padding: 1.5em;
+  padding-bottom: 2.5em;
+  width: auto;
+  height: 2.5em;
+  color: white;
+  text-decoration: none;
+}
+
+a:hover, a:visited, a:link 
+{
+    text-decoration: none;
+}
+
+
+
+.quizContainer {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  position: relative;
+  top: 55vh;
+  margin-left: 20vw;
 }
 
-.App-link {
-  color: #61dafb;
+.quizQuestion {
+  margin-top: 1em;
+  margin-bottom: 1em;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.textArea {
+  text-align: left;
+  line-height: 1.75;
+  position: relative;
+  left: 20vw;
+  top: 5vh;
+  font-size: 1.1em;
+  width: 75%;
+  font-weight: lighter;
+  display: inline-block;
+}
+
+.textAreaFloating {
+  text-align: left;
+  line-height: 1.75;
+  font-size: 1.1em;
+  width: 100%;
+  display: inline-block;
+}
+
+.secondaryHeader {
+  font-size: 2em; 
+  font-weight: 900;
+  color: #3A3A3A;
+}
+
+.secondaryHeaderContainer {
+  position: relative;
+  top: 50vh;
+  margin-left: 20vw;
+
+}
+
+.equipmentImage {
+  max-width: 100%;
+  height: auto;
+}
+
+.yellowButton {
+  background-color: #3A3A3A;
+  border: none;
+  border-radius: 4px;
+  color: #FFD545;
+  margin-top: 1em;
+}
+
+.sectionCompleted {
+  color: #FFD545;
+  display: inline-block;
+  font-size: 1em;
+}
+
+.sectionCompletedContainer{
+  width: 15vw;
+  padding: 1.5em;
+  display: inline-block;
+  background-color: #3A3A3A;
+  position: fixed;
+  bottom: 0;
+  left:0;
 }
