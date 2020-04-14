@@ -4,21 +4,21 @@ import React from 'react';
 export default function Sidebar() {
     return (
         <div style={sidebarStyle}>
-            <img src={require("../assets/logo.jpg")} alt="logo" style={logoStyle}/>
+            <img src={require("../assets/logo_white.png")} alt="logo" style={logoStyle} />
             <nav>
                 <ul>
-                <a href="/"><li className="hoverBuddy">Home</li></a>
-                <a href="/motivation"><li className="hoverBuddy">Motivation</li></a>
-                <a href="/theory"><li  className="hoverBuddy">Theory</li></a>
-                <a href="/lab"><li  className="hoverBuddy">The Lab</li></a>
-                <a href="/dragbalance"><li  className="hoverBuddy">Drag Balance</li></a>
-                <a href="/safety"><li  className="hoverBuddy">Safety</li></a>
+                    <a href="/"><li className="hoverBuddy"><img style={{inlineSize:"1.6em", paddingRight:"0.8em", }} src={require("../assets/home-run.svg")}/>Home</li></a>
+                    <a href="/motivation"><li className="hoverBuddy"><img style={{inlineSize:"1.6em", paddingRight:"0.8em", }} src={require("../assets/youtube.svg")}/>Motivation</li></a>
+                    <a href="/theory"><li className="hoverBuddy"><img style={{inlineSize:"1.6em", paddingRight:"0.8em", }} src={require("../assets/book.svg")}/>Theory</li></a>
+                    <a href="/lab"><li className="hoverBuddy"><img style={{inlineSize:"1.6em", paddingRight:"0.8em", }} src={require("../assets/lab.svg")}/>The Lab</li></a>
+                    <a href="/dragbalance"><li className="hoverBuddy"><img style={{inlineSize:"1.6em", paddingRight:"0.8em", }} src={require("../assets/libra.svg")}/>Drag Balance</li></a>
+                    <a href="/safety"><li className="hoverBuddy"><img style={{inlineSize:"1.6em", paddingRight:"0.8em", }} src={require("../assets/warning.svg")}/>Safety</li></a>
                 </ul>
             </nav>
         </div>
     )
 
-    
+
 }
 
 const sidebarStyle = {
@@ -32,35 +32,35 @@ const sidebarStyle = {
 
 const navStyle = {
     display: "block",
-    fontSize: "1em", 
+    fontSize: "1em",
     padding: "2em",
     paddingBottom: "3em",
-    width:"auto",
+    width: "auto",
     height: "4em",
     color: "white",
     textDecoration: "none",
-   
-}    
+
+}
 
 const logoStyle = {
     display: "flex",
     flexWrap: "wrap",
     overflow: "hidden",
     width: "15vw",
-
+    padding: "0.5em"
 }
 
 
 
-/*<link  to=''>Motivation</link>                           
+/*<link  to=''>Motivation</link>
                 <link  to=''>Theory</link>
                 <link  to=''>The Lab</link>
                 <link  to=''>Safety</link>
-                
+
                 <nav>
                 <navStyle>Motivation</navStyle>
-                
-            </nav> 
+
+            </nav>
                 <div >Theory</div>
                 <div >The Lab</div>
                 <div >Safety</div>*/

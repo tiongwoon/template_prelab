@@ -6,19 +6,20 @@
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Fira Sans', sans-serif;
   line-height: 1.5;
 }
 
 .hoverBuddy:hover {
-  box-shadow: 0px 0px 35px -8px #FFD545;
+  /*box-shadow: 0px 0px 35px -8px ##006EAF;*/
   height: 3.5em;
+  background-color: #9D9D9D;
 }
 
 .hoverBuddy {
   display: block;
-  font-size: 1em;
-  padding: 1.5em;
+  font-size: 1.1em;
+  padding: 1em;
   padding-bottom: 2.5em;
   width: auto;
   height: 2.5em;
@@ -54,7 +55,7 @@ a:hover, a:visited, a:link
   top: 5vh;
   font-size: 1.1em;
   width: 75%;
-  font-weight: lighter;
+  font-weight: light;
   display: inline-block;
 }
 
@@ -62,7 +63,7 @@ a:hover, a:visited, a:link
   text-align: left;
   line-height: 1.75;
   font-size: 1.1em;
-  width: 100%;
+  width: 90%;
   display: inline-block;
 }
 
@@ -88,14 +89,15 @@ a:hover, a:visited, a:link
   background-color: #3A3A3A;
   border: none;
   border-radius: 4px;
-  color: #FFD545;
+  color: #006EAF;
   margin-top: 1em;
 }
 
 .sectionCompleted {
-  color: #FFD545;
+  color: #D4EFFC;
   display: inline-block;
   font-size: 1em;
+  font-weight: 500;
 }
 
 .sectionCompletedContainer{
@@ -107,3 +109,8 @@ a:hover, a:visited, a:link
   bottom: 0;
   left:0;
 }
+
+.MathJax {
+  font-size: 2.5em;
+}
+

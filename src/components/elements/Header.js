@@ -21,7 +21,7 @@ const headerStyle = {
     top: "3vh",
     fontSize: "3em", //browser default is 16, which is 1em
     fontWeight: "900",
-    color: "#FFD545",
+    color: "#D4EFFC",
     display: "inline-block"
 }
 
@@ -29,5 +29,5 @@ const topBar = {
     width: "100%",
     height: "15vh",
     top: "0",
-    backgroundColor: "#3A3A3A",
+    backgroundColor: "#003B73",
 }

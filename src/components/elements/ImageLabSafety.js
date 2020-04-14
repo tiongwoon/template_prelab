@@ -3,16 +3,15 @@ import ImageMapper from 'react-image-mapper';
 
 export default function ImageLabSafety(props) {
     return (
-        <div style={container}>
             <ImageMapper 
                 src={require("../../assets/labpic.jpeg")} 
                 map={props.map} 
                 imgWidth={1600} 
                 width={1000}
                 height={600}
-                onClick={area => props.open(area)}
+                onMouseEnter={area => props.enterArea(area)}
+                onMouseLeave={area => props.leaveArea(area)}
             />
-        </div>
     )
 }
 

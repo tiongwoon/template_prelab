@@ -10,6 +10,7 @@ export class ProgressButton extends Component {
     clickHandler(){
         this.props.progress();
         this.props.toggle();
+        
     }
 
     render() {
@@ -31,8 +32,8 @@ export class ProgressButton extends Component {
 export default ProgressButton
 
 const buttonStyle = {
-    backgroundColor: "#FFD545",
-    color: "#3A3A3A",
+    backgroundColor: "#006EAF",
+    color: "#FFFFFF",
     border: "none",
     borderRadius: "4px",
     margin:"2em",

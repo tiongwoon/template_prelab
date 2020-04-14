@@ -3,6 +3,7 @@ import SectionCards from '../SectionCards'
 import ProgressBar from '../elements/ProgressBar'
 import Header from '../elements/Header'
 import { Button, Collapse } from '@chakra-ui/core'
+import Sidebar from '../Sidebar'
 
 export default function Home(props) {
     //for show task Collapse
@@ -23,8 +24,8 @@ export default function Home(props) {
             </div>
             <SectionCards />
             <Button style={{
-                backgroundColor: "#FFD545", fontWeight: "900", color: "#3A3A3A", border: "none", 
-                position: "absolute", top: "90vh", right: "40vw", width: "20vw", height: "8vh", cursor: "pointer", fontSize: "2em"
+                backgroundColor: "#006EAF", fontWeight: "900", color: "#D4EFFC", border: "none", 
+                position: "absolute", top: "90vh", left: "45vw", width: "20vw", height: "8vh", cursor: "pointer", fontSize: "2em"
             }} onClick={handleToggle}>
                 Show Task
       </Button>
@@ -48,6 +49,7 @@ export default function Home(props) {
                     </div>
                 </div>
             </Collapse>
+            <Sidebar />
         </div>
     )
 }
@@ -55,7 +57,7 @@ export default function Home(props) {
 const introContainer = {
     position: "relative",
     top: "-6vh",
-    left: "12.5vw",
+    left: "20vw",
     maxWidth: "80vw",
     display: "inline-block",
     marginTop: "1em",
@@ -63,7 +65,7 @@ const introContainer = {
 
 const taskStyle = {
     position: "relative",
-    color: "#FFD545",
+    color: "#D4EFFC",
     width: "auto",
     textAlign: "center",
 }
@@ -72,7 +74,7 @@ const taskContainer = {
     background: '#3A3A3A',
     borderRadius: "4px",
     position: "relative",
-    marginLeft: "12.5vw",
+    marginLeft: "20vw",
     top: "60vh",
     width: "75vw",
     height: "auto",

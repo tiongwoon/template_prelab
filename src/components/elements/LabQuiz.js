@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Collapse, Button } from '@chakra-ui/core';
-import MathJax from 'react-mathjax2'
+import MathJax from 'react-mathjax2';
+import * as math from 'mathjs';
 
 export default function LabQuiz() {
     //Create state for the quiz
@@ -20,7 +21,6 @@ export default function LabQuiz() {
         const eventValue = valueOne;
         setanswerOne(eventValue);
         event.preventDefault();
-        setShow(false);
     }
 
     function changeHandlerOne(event) {
@@ -32,7 +32,7 @@ export default function LabQuiz() {
         const eventValue = valueTwo;
         setanswerTwo(eventValue);
         event.preventDefault();
-        setShow(false);
+
     }
 
     function changeHandlerTwo(event) {
@@ -44,7 +44,7 @@ export default function LabQuiz() {
         const eventValue = valueThree;
         setanswerThree(eventValue);
         event.preventDefault();
-        setShow(false);
+
     }
 
     function changeHandlerThree(event) {
@@ -56,7 +56,7 @@ export default function LabQuiz() {
         const eventValue = valueFour;
         setanswerFour(eventValue);
         event.preventDefault();
-        setShow(false);
+
     }
 
     function changeHandlerFour(event) {
@@ -68,96 +68,133 @@ export default function LabQuiz() {
         const eventValue = valueFive;
         setanswerFive(eventValue);
         event.preventDefault();
-        setShow(false);
     }
 
     function changeHandlerFive(event) {
         setvalueFive(event.target.value); //this function is to bind the user input to state so that we can use it to check answers      
     }
 
-    //for the collapse
-    const [show, setShow] = useState(false);
-    
-    function handleToggle() {
-        setShow(!show);
-    } 
+    //for the collapse, each show state for each button
+    const [showOne, setShowOne] = useState(false);
+    const [showTwo, setShowTwo] = useState(false);
+    const [showThree, setShowThree] = useState(false);
+    const [showFour, setShowFour] = useState(false);
+    const [showFive, setShowFive] = useState(false);
+
+    function handleToggle(questionNumber) {
+        if (questionNumber === 1) {
+            setShowOne(!showOne);
+        } else if (questionNumber === 2) {
+            setShowTwo(!showTwo);
+        } else if (questionNumber === 3) {
+            setShowThree(!showThree);
+        } else if (questionNumber === 4) {
+            setShowFour(!showFour);
+        } else if (questionNumber === 5) {
+            setShowFive(!showFive);
+        }
+    }
+
+    function showCollapse(questionNumber) {
+
+        if (questionNumber === 1) {
+            return (               
+                showOne
+            )
+        } else if (questionNumber === 2) {
+            return (
+                showTwo
+            )
+        } else if (questionNumber === 3) {
+            return (
+                showThree
+            )
+        } else if (questionNumber === 4) {
+            return (
+                showFour
+            )
+        } else if (questionNumber === 5) {
+            return (
+                showFive
+            )
+        }
+    }
 
     function Answer(questionNumber) {
 
         let answerState = [answerOne, answerTwo, answerThree, answerFour, answerFive];
-        let userAnswer = answerState[questionNumber - 1];
+        let userAnswer = JSON.parse(answerState[questionNumber - 1]); //convert it to number
 
         //Create Mathematical Expressions for solutions, order by the question
-        const solutionTwo = `85 * 0.1 = 8.5mm = 0.0085m`;
+        const solutionTwo = `{\\large 85 * 0.1 = 8.5~ \\mathrm{mm} = 0.0085~ \\mathrm{m} }`; //needs tex to add space before units
 
-        const solutionThree = `Delta P = rho g h `;
-        const solutionThree_two = `= 1000 kg m^(3) *9.81ms^(-1)*0.0085m`;
-        const solutionThree_three = `= 83.39Pa`;
+        const solutionThree = `{\\large \\Delta p = \\rho g h  }`;
+        const solutionThree_two = `{\\large = 1000~\\mathrm{kg m^{-3}} ~ * ~ 9.81~\\mathrm{ms^{-1}} ~ * ~ 0.0085~m }`;
+        const solutionThree_three = `{\\large = 83.39~ \\mathrm{Pa} }`;
 
-        const solutionFour = `rho = 1.205 kgm^-3`;
+        const solutionFour = `{\\large \\rho = 1.205~\\mathrm{kgm^{-3}} }`;
 
-        const solutionFive = `P_(Total) = P_(static) + (rho * v^2)/2`;
-        const solutionFive_two = `v = sqrt((DeltaP)*2/rho)`;
-        const solutionFive_three = ` = 11.8ms^-1`;
+        const solutionFive = `{\\large p_\\mathrm{total} = p_\\mathrm{static} + \\frac{\\rho * v^2}{2} }`;
+        const solutionFive_two = `{\\large v = \\sqrt{\\frac{\\Delta p*2}{\\rho}} }`;
+        const solutionFive_three = ` {\\large = 11.8~\\mathrm{ms^{-1}} }`;
 
         //for answers handling and checking
         const solutions = {
-            answer: ["85", "0.0085", "83.39", "1.205", "11.8"],
-            
-            working:[ 
-                <center>Reading off the manometer image gives a value of 85mm</center>, 
-                
-                <MathJax.Context><MathJax.Node>{solutionTwo}</MathJax.Node></MathJax.Context>, 
-            
-                <center><MathJax.Context><MathJax.Node>{solutionThree}</MathJax.Node></MathJax.Context>
-                <br></br><br></br>
-                <MathJax.Context><MathJax.Node>{solutionThree_two}</MathJax.Node></MathJax.Context>
-                <br></br><br></br>
-                <MathJax.Context><MathJax.Node>{solutionThree_three}</MathJax.Node></MathJax.Context>
-                </center>,
-                
-                <center>Referring to the Data and Formulae Booklet, Table E.16 and approximating to the dry air density at 20°C, 
-                <br></br><br></br>
-                <MathJax.Context><MathJax.Node>{solutionFour}</MathJax.Node></MathJax.Context>
+            answer: [85.0, 8.5, 83.4, 1.2, 11.8],
+
+            working: [
+                <center> Reading off the manometer image gives a value of 85mm</center>,
+
+                <MathJax.Context input='tex'><MathJax.Node>{solutionTwo}</MathJax.Node></MathJax.Context>,
+
+                <center> <MathJax.Context input='tex'><MathJax.Node>{solutionThree}</MathJax.Node></MathJax.Context>
+                    <br></br>
+                    <MathJax.Context input='tex'><MathJax.Node>{solutionThree_two}</MathJax.Node></MathJax.Context>
+                    <br></br>
+                    <MathJax.Context input='tex'><MathJax.Node>{solutionThree_three}</MathJax.Node></MathJax.Context>
                 </center>,
 
-                <center><MathJax.Context><MathJax.Node>{solutionFive}</MathJax.Node></MathJax.Context>
-                <br></br><br></br>
-                <MathJax.Context><MathJax.Node>{solutionFive_two}</MathJax.Node></MathJax.Context>
-                <br></br><br></br>
-                <MathJax.Context><MathJax.Node>{solutionFive_three}</MathJax.Node></MathJax.Context>
+                <center>There are two ways you can solve this. Either refer to the Data and Formulae Booklet, Table E.16 and approximate to the dry air density at 20°C or use the ideal gas relation to solve. Hence giving:
+                <br></br>
+                    <MathJax.Context input='tex'><MathJax.Node>{solutionFour}</MathJax.Node></MathJax.Context>
+                </center>,
+
+                <center><MathJax.Context input='tex'><MathJax.Node>{solutionFive}</MathJax.Node></MathJax.Context>
+                    <br></br>
+                    <MathJax.Context input='tex'><MathJax.Node>{solutionFive_two}</MathJax.Node></MathJax.Context>
+                    <br></br>
+                    <MathJax.Context input='tex'><MathJax.Node>{solutionFive_three}</MathJax.Node></MathJax.Context>
                 </center>,
             ],
-            
+
 
         }
 
-        if (userAnswer === solutions.answer[questionNumber - 1]) { //minus one here because index starts at 1 for easier reading
+        if (math.round(userAnswer, 1) === solutions.answer[questionNumber - 1]) { //minus one here because index starts at 1 for easier reading
             return (
                 <div>
-                    <p>Correct!</p>
+                    <p style={{color:"#66A40A"}}>Correct!</p>
                     <br></br>
-                    <Button style={showSolutionButtonStyle} onClick={handleToggle}>Show solution</Button>
-                    <Collapse isOpen={show} marginTop="0.7em">
+                    <Button style={showSolutionButtonStyle} onClick={() => handleToggle(questionNumber)}>Show solution</Button>
+                    <Collapse isOpen={showCollapse(questionNumber)} marginTop="0.7em">
                         <br></br>
-                    {solutions.working[questionNumber - 1]} 
+                        {solutions.working[questionNumber - 1]}
                     </Collapse>
                 </div>
             )
         } else {
             return (
                 <div>
-                    <p>Wrong, Try again.</p>
+                    <p style={{color:"#DD2501"}}>Wrong, Try again.</p>
                     <br></br>
-                    <Button style={showSolutionButtonStyle} onClick={handleToggle}>Show solution</Button>
-                    <Collapse isOpen={show} marginTop="0.7em">
+                    <Button style={showSolutionButtonStyle} onClick={() => handleToggle(questionNumber)}>Show solution</Button>
+                    <Collapse isOpen={showCollapse(questionNumber)} marginTop="0.7em">
                         <br></br>
-                    {solutions.working[questionNumber - 1]} 
+                        {solutions.working[questionNumber - 1]}
                     </Collapse>
                 </div>
             )
         }
-
 
     }
 
@@ -171,7 +208,7 @@ export default function LabQuiz() {
 
                 </div>
             </div>
-            <img style={manometerStyle} src={require("../../assets/manometer.jpg")} /> 
+            <img style={manometerStyle} src={require("../../assets/manometer.jpg")} />
 
             <div className="quizContainer">
                 <div className="quizQuestion">
@@ -190,7 +227,7 @@ export default function LabQuiz() {
                 </div>
 
                 <div className="quizQuestion">
-                    <p>2. The manometer is sloped and has a scale factor of 0.1, what is the vertical height? (in m)</p>
+                    <p>2. The manometer is sloped and has a scale factor of 0.1, what is the vertical height? (in mm)</p>
                     <form onSubmit={submitHandlerTwo}>
                         <input
                             name="answer"
@@ -204,7 +241,7 @@ export default function LabQuiz() {
                 </div>
 
                 <div className="quizQuestion">
-                    <p>3. The manometer contains water (density 1000kg/m3). What is the pressure difference has it measured? (in Pa, answer to 2 s.f.)</p>
+                    <p>3. The manometer contains water (density 1000kg/m3). What is the pressure difference has it measured? (in Pa, answer to 3 d.p.)</p>
                     <form onSubmit={submitHandlerThree}>
                         <input
                             name="answer"
@@ -218,7 +255,7 @@ export default function LabQuiz() {
                 </div>
 
                 <div className="quizQuestion">
-                    <p>4. Given a temperature of 21°C, estimate the density of air in the wind tunnel to 3 d.p. (in S.I. units).</p>
+                    <p>4. Given a temperature of 21°C and under atmospheric pressure, estimate the density of air in the wind tunnel to 3 d.p. (in S.I. units).</p>
                     <form onSubmit={submitHandlerFour}>
                         <input
                             name="answer"
@@ -250,14 +287,14 @@ export default function LabQuiz() {
 }
 
 const checkButtonStyle = {
-    backgroundColor: "#FFD545",
-    color: "#3A3A3A",
+    backgroundColor: "#006EAF",
+    color: "#FFFFFF",
     border: "none",
     borderRadius: "4px",
     padding: "1em",
     margin: "1em",
     boxShadow: "0px 0px 10px 0px rgba(0,0,0,0.15)",
-    cursor:"pointer",
+    cursor: "pointer",
 }
 
 const inputBoxStyle = {
@@ -272,7 +309,7 @@ const manometerStyle = {
     position: "relative",
     //left: "30vw",
     top: "52vh",
-    left:"20vw"
+    left: "20vw"
 }
 
 const showSolutionButtonStyle = {
@@ -280,12 +317,12 @@ const showSolutionButtonStyle = {
     border: "none",
     borderRadius: "4px",
     color: "#FFD545",
-    cursor:"pointer"
+    cursor: "pointer"
 }
 
 const display = {
     display: "inline-block",
     position: "relative",
-    top:"45vh",
-    marginTop:"10vh"
+    top: "45vh",
+    marginTop: "10vh"
 }

@@ -7,12 +7,16 @@ import ProgressButton from './ProgressButton';
 
 export default function Canvas(props) {
     //for progress button state
-    const [completeDragBalanceSection, setcompleteDragBalanceSection] = useState(localStorage.getItem('completeDragBalanceSection') || true);
+    const [completeDragBalanceSection, setcompleteDragBalanceSection] = useState(localStorage.getItem('completeDragBalanceSection') || 'notdone');
 
     function turnOffDragBalanceButton() {
-        setcompleteDragBalanceSection(false);
-        localStorage.setItem('completeDragBalanceSection', completeDragBalanceSection)
+        setcompleteDragBalanceSection('done');
+      
     }
+
+    useEffect(() => {
+        localStorage.setItem('completeDragBalanceSection', completeDragBalanceSection)
+    }, [completeDragBalanceSection]);
 
     //for the drag balance drawing
     const size = {
@@ -415,26 +419,47 @@ export default function Canvas(props) {
 
     //function to handle the quiz
 
-    const [value, setvalue] = useState('');
+    const [valueOne, setvalueOne] = useState(''); 
+    const [valueTwo, setvalueTwo] = useState(''); //to hold the state for question 2
+
     const [show, setShow] = useState(false);
-    const [result, setresult] = useState(false);
-    const [answer, setanswer] = useState('');
+    const [showTwo, setShowTwo] = useState(false); //stores the state for each button
 
-    function submitHandler(event) {
-        let eventValue = value;
-        setresult(true);
-        setanswer(eventValue);
-        event.preventDefault();
+    const [answerOne, setanswerOne] = useState('');
+    const [answerTwo, setanswerTwo] = useState('');
+
+    function submitHandler(event, questionNumber) {
+        if (questionNumber == 1){
+            let eventValueOne = valueOne;
+            setanswerOne(eventValueOne);
+            event.preventDefault();
+        } else if (questionNumber == 2){
+            setanswerTwo(valueTwo);
+            event.preventDefault();
+        }
     }
 
-    function changeHandler(event) {
-        setvalue(event.target.value); //this function is to bind the user input to state so that we can use it to check answers      
+    function changeHandler(event, questionNumber) {
+        if (questionNumber == 1){
+        setvalueOne(event.target.value); //this function is to bind the user input to state so that we can use it to check answers and holds the single source of truth      
+        } else if (questionNumber == 2) {
+            setvalueTwo(event.target.value);
+        }
     }
 
-    const handleToggle = () => setShow(!show);
+    //const handleToggle = () => setShow(!show);
+
+    function handleToggle(questionNumber) {
+        if (questionNumber == 1){
+            setShow(!show);
+        } else if (questionNumber == 2){
+            setShowTwo(!showTwo);
+        }
+    }
 
     //solution for the quiz
-    function Solution(){
+    function Solution(props){
+        if (props.questionNumber == 1) {
         return (
             <center>
                 To achieve balance, the drag force has to be equal to the weight so that moment per length (due to equal moment arm) is 0,
@@ -448,35 +473,63 @@ export default function Canvas(props) {
                 <MathJax.Context><MathJax.Node>m = 215g (3 s.f.)</MathJax.Node></MathJax.Context>
             </center>
         )
+        } else if (props.questionNumber == 2){
+            return(
+                <center>
+                <MathJax.Context><MathJax.Node>F_(Drag)=0.210*9.81=2.0601N</MathJax.Node></MathJax.Context>
+                <br></br><br></br>
+                Rearranging the drag equation from the previous question, substituting the given values and solving for <MathJax.Context><MathJax.Node>C_D</MathJax.Node></MathJax.Context>,
+                <br></br><br></br>
+                <MathJax.Context><MathJax.Node>C_D = 1.14</MathJax.Node></MathJax.Context>
+                <br></br><br></br>
+                In the actual lab session, the airflow speed is not readily given. You will need to work it out from the technique in the 'Lab' section of this website, ie. using the manometer and pitot tube'
+                </center>
+            )
+        }
     }
 
-    function Answer() {
-        if (answer === '215') {
-            return (
-                <div>
-                    <p>Correct!</p>
-                    <Button style={showSolutionButtonStyle} onClick={handleToggle}>Show solution</Button>
-                    <Collapse isOpen={show} marginTop="0.7em">
-                        <br></br>
-                    <Solution />
-                </Collapse>
-                </div>
-            )
-        } else {
-            return (
-                <div>
-                    <p>Wrong, Try again.</p>
-                    <Button style={showSolutionButtonStyle} onClick={handleToggle}>Show solution</Button>
-                    <Collapse isOpen={show} marginTop="0.7em">
-                        <br></br>
-                   <Solution/>
-                </Collapse>
-                </div>
-            )
+
+
+    function Answer(questionNumber) {
+        if (questionNumber == 1) {
+            if (answerOne <= '220' && answerOne >= '210') {
+                return (
+                    <div>
+                        <p>Correct!</p>
+                        <Button style={showSolutionButtonStyle} onClick={() => handleToggle(1)}>Show solution</Button>
+                        <Collapse isOpen={show} marginTop="0.7em">
+                            <br></br>
+                        <Solution questionNumber={1} />
+                    </Collapse>
+                    </div>
+                )
+            } else {
+                return (
+                    <div>
+                        <p>Wrong, try again.</p>
+                        <Button style={showSolutionButtonStyle} onClick={()=>handleToggle(1)}>Show solution</Button>
+                        <Collapse isOpen={show} marginTop="0.7em">
+                            <br></br>
+                    <Solution questionNumber={1}/>
+                    </Collapse>
+                    </div>
+                )
+            }
+        } else if (questionNumber==2){
+                return (
+                    <div>
+                    <p>{answerTwo =='1.14' ? 'Correct' : 'Wrong, try again.' }</p>
+                    <Button style={showSolutionButtonStyle} onClick={()=>handleToggle(2)}>Show solution</Button>
+                        <Collapse isOpen={showTwo} marginTop="0.7em">
+                            <br></br>
+                        <Solution questionNumber={2} />
+                    </Collapse>
+                    </div>
+                )
+            
         }
 
     }
-
 
     //anything that needs to change and respond, put in here
     useEffect(() => {
@@ -526,24 +579,37 @@ export default function Canvas(props) {
                     </ul>
                 </div>
             </div>
+
             {!air ? <Button style={buttonStyle} onClick={onAirFlow}>Turn On Air Flow</Button> : <Button style={altButtonStyle} onClick={offAirFlow}>Turn Off Air Flow</Button>}
             
             <div style={quizContainerStyle}>
-                <div>Can you identify the right amount of mass, in g, to add in order to balance the drag force?</div>
-                <form onSubmit={submitHandler}>
+                <div>1. Can you identify the right amount of mass, in g, to add in order to balance the drag force?</div>
+                <form onSubmit={(event) => submitHandler(event, 1)}>
                     <input
                         name="answer"
                         type="string"
-                        onChange={changeHandler}
+                        onChange={(event) => changeHandler(event, 1)}
                         style={inputBoxStyle}
                     />
                     <input type="submit" value="Check Answer" style={checkButtonStyle} /> <br></br>
                 </form>
-                {answer ? Answer() : null} 
+                {answerOne ? Answer(1) : null} 
+                
+                <div>2. Given that the mass to balance the drag force is 210 g, what is the drag coefficient of the disc?</div>
+                <form onSubmit={(event) => submitHandler(event, 2)}>
+                    <input
+                        name="answer"
+                        type="string"
+                        onChange={(event) => changeHandler(event, 2)}
+                        style={inputBoxStyle}
+                    />
+                    <input type="submit" value="Check Answer" style={checkButtonStyle} /> <br></br>
+                </form>
+                {answerTwo ? Answer(2) : null} 
             </div>
             
             <Sidebar />
-            {completeDragBalanceSection ? <ProgressButton progress={props.progress} toggle={turnOffDragBalanceButton} name="dragbalance"/> : 
+            {completeDragBalanceSection ==='notdone' ? <ProgressButton progress={props.progress} toggle={turnOffDragBalanceButton}/> : 
                 <div className="sectionCompletedContainer">
                     <div className="sectionCompleted">You have completed this section. Move on to your next section of choice</div>
                 </div> }
@@ -554,14 +620,14 @@ export default function Canvas(props) {
 const canvasPosition = {
     position: "relative",
     left: "20vw",
-    top: "10vh",
+    top: "13vh",
     boxShadow: "0px 0px 10px 0px rgba(0,0,0,0.15)",
 }
 
 const checkBoxContainer = {
     position: "relative",
     left: "63vw",
-    top: "-33vh",
+    top: "-28vh",
     width: "30vw"
 }
 
@@ -571,10 +637,10 @@ const checkboxStyle = {
 }
 
 const buttonStyle = {
-    backgroundColor: "#FFD545",
+    backgroundColor: "#006EAF",
     border: "none",
     borderRadius: "4px",
-    color: "#3A3A3A",
+    color: "#FFFFFF",
     boxShadow: "0px 0px 10px 0px rgba(0,0,0,0.15)",
     position: "absolute",
     left: "20vw",
@@ -590,7 +656,7 @@ const altButtonStyle = {
     backgroundColor: "#3A3A3A",
     border: "none",
     borderRadius: "4px",
-    color: "#FFD545",
+    color: "#006EAF",
     boxShadow: "0px 0px 10px 0px rgba(0,0,0,0.15)",
     position: "absolute",
     left: "20vw",
@@ -603,16 +669,16 @@ const altButtonStyle = {
 }
 
 const showSolutionButtonStyle = {
-    backgroundColor: "#3A3A3A",
+    backgroundColor: "#D4EFFC",
     border: "none",
     borderRadius: "4px",
-    color: "#FFD545",
+    color: "#003E74",
     cursor:"pointer"
 }
 
 const checkButtonStyle = {
-    backgroundColor: "#FFD545",
-    color: "#3A3A3A",
+    backgroundColor: "#006EAF",
+    color: "#FFFFFF",
     border: "none",
     borderRadius: "4px",
     padding: "1em",
@@ -635,7 +701,7 @@ const addMargin = {
 const quizContainerStyle = {
     position: "absolute",
     left:"20vw",
-    top: "105vh",
+    top: "115vh",
     display:"block", 
     marginBottom:"4.5em",
 }

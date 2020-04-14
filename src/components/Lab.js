@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     Modal,
     ModalOverlay,
@@ -20,12 +20,15 @@ import Slider from "react-slick";
 export default function Lab(props) {
 
     //for progress button state
-    const [completeLabSection, setcompleteLabSection] = useState(localStorage.getItem('completeLabSection') || true);
+    const [completeLabSection, setcompleteLabSection] = useState(localStorage.getItem('completeLabSection') || 'notdone');
 
     function turnOffLabButton() {
-        setcompleteLabSection(false);
-        localStorage.setItem('completeLabSection', completeLabSection)
+        setcompleteLabSection('done');
     }
+
+    useEffect(() => {
+        localStorage.setItem('completeLabSection', completeLabSection)
+    }, [completeLabSection]);
 
     const [areaWhich, setareaWhich] = useState(''); //so the content for each area clicked will be determined by this
 
@@ -48,7 +51,12 @@ export default function Lab(props) {
     function Arrow(props) {
         let className = props.type === "next" ? "nextArrow" : "prevArrow";
         className += " arrow";
-        const char = props.type === "next" ? <Button style={{position:"relative", left:"900px", top:"-5vh", zIndex:"2"}}>Next</Button> : <Button style={{position:"relative", left:"3vw", top:"75vh", zIndex:"2"}}>Previous</Button>;
+        const char = props.type === "next" ? <Button border="none" bg="#D4EFFC" style={{display:"inline-block", position:"relative", 
+                                                    left:"550px", top:"0vh", cursor:"pointer",
+                                                    zIndex:"2"}}>Next</Button> 
+                                        : <Button border="none" bg="#D4EFFC" style={{ display:"inline-block", position:"relative", 
+                                                    left:"350px", top:"647px", cursor:"pointer",
+                                                    zIndex:"2", }}>Previous</Button>;
         return (
             <span className={className} onClick={props.onClick}>
                 {char}
@@ -63,7 +71,7 @@ export default function Lab(props) {
             <br></br>
              In this section, you will be introduce to the equipment, as well as answering some questions to strengthen your understanding.<br></br> Click on the areas on the map to access the information. </center>
 
-            <Slider {...settings} style={{ position: "absolute", left: "20vw", top: "35vh", width: "1000px", height: "600px" }}
+            <Slider {...settings} style={{ position: "absolute", left: "20vw", top: "35vh", width: "1000px", height: "650px" }}
                 nextArrow={<Arrow type="next" />}
                 prevArrow={<Arrow type="prev" />}>
                 <div>
@@ -97,7 +105,7 @@ export default function Lab(props) {
             </Modal>
             <LabQuiz />
             <Sidebar />
-            {completeLabSection ? <ProgressButton progress={props.progress} toggle={turnOffLabButton} name="theory" /> :
+            {completeLabSection === 'notdone' ? <ProgressButton progress={props.progress} toggle={turnOffLabButton} name="theory" /> :
                 <div className="sectionCompletedContainer">
                     <div className="sectionCompleted">You have completed this section. Move on to your next section of choice</div>
                 </div>}

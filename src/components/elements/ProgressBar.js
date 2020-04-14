@@ -8,9 +8,9 @@ export class ProgressBar extends Component {
                 <div style={Bar}>
                     <div style={
                         {
-                            width: (this.props.counter+1) * 10 + 'vh', // (+1)here because clicking starts counting at 0
+                            width: (this.props.counter) * 10 + 'vw', // (+1)here because clicking starts counting at 0
                             height: 20,
-                            backgroundColor: "#FFD545",
+                            backgroundColor: "#006EAF",
                             display: "inline-block",
                         }}
                     >
@@ -27,7 +27,7 @@ const Bar = {
     //position: "relative",
     //top: "33vh",
     //left: "20vw",
-    width: "60vw",
+    width: "50vw",
     height: "20px",
     backgroundColor: "#3A3A3A",
     display: "inline-block"
@@ -48,7 +48,7 @@ const headerStyle = {
 const container = {
     position: "relative",
     top: "25vh",
-    left: "12.5vw",
+    left: "20vw",
     width: "auto",
     display: "inline"
     
