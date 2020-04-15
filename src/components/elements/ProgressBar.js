@@ -10,7 +10,7 @@ export class ProgressBar extends Component {
                         {
                             width: (this.props.counter) * 10 + 'vw', // (+1)here because clicking starts counting at 0
                             height: 20,
-                            backgroundColor: "#006EAF",
+                            backgroundColor: "#38B2AC",
                             display: "inline-block",
                         }}
                     >

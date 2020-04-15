@@ -104,7 +104,7 @@ export default function Lab(props) {
                 </ModalContent>
             </Modal>
             <LabQuiz />
-            <Sidebar />
+            <Sidebar counter={props.counter} />
             {completeLabSection === 'notdone' ? <ProgressButton progress={props.progress} toggle={turnOffLabButton} name="theory" /> :
                 <div className="sectionCompletedContainer">
                     <div className="sectionCompleted">You have completed this section. Move on to your next section of choice</div>

@@ -1,20 +1,26 @@
 import React from 'react';
+import { CircularProgress, CircularProgressLabel } from "@chakra-ui/core";
 //import { Link } from 'react-router-dom';
 
-export default function Sidebar() {
+export default function Sidebar(props) {
     return (
         <div style={sidebarStyle}>
             <img src={require("../assets/logo_white.png")} alt="logo" style={logoStyle} />
             <nav>
                 <ul>
-                    <a href="/"><li className="hoverBuddy"><img style={{inlineSize:"1.6em", paddingRight:"0.8em", }} src={require("../assets/home-run.svg")}/>Home</li></a>
-                    <a href="/motivation"><li className="hoverBuddy"><img style={{inlineSize:"1.6em", paddingRight:"0.8em", }} src={require("../assets/youtube.svg")}/>Motivation</li></a>
-                    <a href="/theory"><li className="hoverBuddy"><img style={{inlineSize:"1.6em", paddingRight:"0.8em", }} src={require("../assets/book.svg")}/>Theory</li></a>
-                    <a href="/lab"><li className="hoverBuddy"><img style={{inlineSize:"1.6em", paddingRight:"0.8em", }} src={require("../assets/lab.svg")}/>The Lab</li></a>
-                    <a href="/dragbalance"><li className="hoverBuddy"><img style={{inlineSize:"1.6em", paddingRight:"0.8em", }} src={require("../assets/libra.svg")}/>Drag Balance</li></a>
-                    <a href="/safety"><li className="hoverBuddy"><img style={{inlineSize:"1.6em", paddingRight:"0.8em", }} src={require("../assets/warning.svg")}/>Safety</li></a>
+                    <a href="/"><li className="hoverBuddy"><img style={{ inlineSize: "1.6em", paddingRight: "0.8em", }} src={require("../assets/home-run.svg")} />Home</li></a>
+                    <a href="/motivation"><li className="hoverBuddy"><img style={{ inlineSize: "1.6em", paddingRight: "0.8em", }} src={require("../assets/youtube.svg")} />Motivation</li></a>
+                    <a href="/theory"><li className="hoverBuddy"><img style={{ inlineSize: "1.6em", paddingRight: "0.8em", }} src={require("../assets/book.svg")} />Theory</li></a>
+                    <a href="/lab"><li className="hoverBuddy"><img style={{ inlineSize: "1.6em", paddingRight: "0.8em", }} src={require("../assets/lab.svg")} />The Lab</li></a>
+                    <a href="/dragbalance"><li className="hoverBuddy"><img style={{ inlineSize: "1.6em", paddingRight: "0.8em", }} src={require("../assets/libra.svg")} />Drag Balance</li></a>
+                    <a href="/safety"><li className="hoverBuddy"><img style={{ inlineSize: "1.6em", paddingRight: "0.8em", }} src={require("../assets/warning.svg")} />Safety</li></a>
                 </ul>
             </nav>
+            <center style={{ marginTop:"1.5em"}}>
+                <CircularProgress size="8vw" thickness={0.1} color="teal" value={(props.counter / 5) * 100}>
+                    <CircularProgressLabel color="white" fontSize="17px">Your Progress</CircularProgressLabel>
+                </CircularProgress>
+            </center>
         </div>
     )
 

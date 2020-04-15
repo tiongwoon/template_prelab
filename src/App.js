@@ -40,11 +40,11 @@ function App() {
       <ThemeProvider>
         <Router>
           <Home counter={counter} path="/" />
-          <Motivation progress={() => handleProgressClick()} path='/motivation' />
-          <Safety progress={() => handleProgressClick()} path='/safety' />
-          <Canvas path='/dragbalance' progress={() => handleProgressClick()} />
-          <Theory progress={() => handleProgressClick()} path='/theory' />
-          <Lab path='/lab' progress={() => handleProgressClick()} />
+          <Motivation counter={counter} progress={() => handleProgressClick()} path='/motivation' />
+          <Safety counter={counter} progress={() => handleProgressClick()} path='/safety' />
+          <Canvas counter={counter} path='/dragbalance' progress={() => handleProgressClick()} />
+          <Theory counter={counter} progress={() => handleProgressClick()} path='/theory' />
+          <Lab counter={counter} path='/lab' progress={() => handleProgressClick()} />
         </Router>
       </ThemeProvider>
 

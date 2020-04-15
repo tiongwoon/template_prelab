@@ -21,7 +21,7 @@ export default function Theory(props) {
             <Header name="Theory" />
            
             <TheoryQuizBox />
-            <Sidebar />
+            <Sidebar counter={props.counter} />
             {completeTheorySection === 'notdone' ? <ProgressButton progress={props.progress} toggle={turnOffTheoryButton} name="theory"/> : 
                 <div className="sectionCompletedContainer">
                     <div className="sectionCompleted">You have completed this section. Move on to your next section of choice</div>

@@ -28,7 +28,7 @@ export default function Motivation(props) {
                 <center style={{ fontWeight: "900" }}>Choose one to watch.</center>
             </div>
             <VideoWrapper />
-            <Sidebar />
+            <Sidebar counter={props.counter} />
 
             {completeMotivationSection === 'notdone'
                 ? <ProgressButton progress={props.progress} toggle={turnOffMotivationButton} name="dragbalance" /> 

@@ -608,7 +608,7 @@ export default function Canvas(props) {
                 {answerTwo ? Answer(2) : null} 
             </div>
             
-            <Sidebar />
+            <Sidebar counter={props.counter} />
             {completeDragBalanceSection ==='notdone' ? <ProgressButton progress={props.progress} toggle={turnOffDragBalanceButton}/> : 
                 <div className="sectionCompletedContainer">
                     <div className="sectionCompleted">You have completed this section. Move on to your next section of choice</div>
