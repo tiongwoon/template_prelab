@@ -8,6 +8,7 @@ import Home from './components/layout/Home';
 import { theme, ThemeProvider, CSSReset } from "@chakra-ui/core";
 import Lab from './components/Lab';
 import Canvas from './components/elements/Canvas';
+import Feedback from './components/Feedback';
 
 
 const customTheme = {
@@ -38,7 +39,9 @@ function App() {
   return (
     <div className="App">
       <ThemeProvider>
+
         <Router>
+          
           <Home counter={counter} path="/" />
           <Motivation counter={counter} progress={() => handleProgressClick()} path='/motivation' />
           <Safety counter={counter} progress={() => handleProgressClick()} path='/safety' />
@@ -46,6 +49,7 @@ function App() {
           <Theory counter={counter} progress={() => handleProgressClick()} path='/theory' />
           <Lab counter={counter} path='/lab' progress={() => handleProgressClick()} />
         </Router>
+        <Feedback />
       </ThemeProvider>
 
     </div>
