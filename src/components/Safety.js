@@ -50,7 +50,7 @@ export default function Safety(props) {
             <Header name="Safety" />
             <div className="textArea">There are 2 main safety precautions which you need to be wary of during the lab.
             <br></br>
-                In the following image of the lab, hover over the hotspot to learn more. 
+               <span style={{fontWeight:"900"}}> In the following image of the lab, hover over the hotspot to learn more. </span>
             </div>
 
             <div style={container}>

@@ -69,7 +69,7 @@ export default function Lab(props) {
             <Header name="Lab" />
             <center className="textArea">In the lab, there are a few equipments which you will need to familarise its working principle in order to fully benefit from the lab session.
             <br></br>
-             In this section, you will be introduce to the equipment, as well as answering some questions to strengthen your understanding.<br></br> Click on the areas on the map to access the information. </center>
+             In this section, you will be introduce to the equipment, as well as answering some questions to strengthen your understanding.<br></br><span style={{fontWeight:"900"}}>Click on the dots on the third image to learn more.</span>  </center>
 
             <Slider {...settings} style={{ position: "absolute", left: "20vw", top: "35vh", width: "1000px", height: "650px" }}
                 nextArrow={<Arrow type="next" />}

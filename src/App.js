@@ -39,9 +39,7 @@ function App() {
   return (
     <div className="App">
       <ThemeProvider>
-
-        <Router>
-          
+        <Router>          
           <Home counter={counter} path="/" />
           <Motivation counter={counter} progress={() => handleProgressClick()} path='/motivation' />
           <Safety counter={counter} progress={() => handleProgressClick()} path='/safety' />
@@ -51,7 +49,6 @@ function App() {
         </Router>
         <Feedback />
       </ThemeProvider>
-
     </div>
   );
 
