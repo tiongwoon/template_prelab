@@ -121,21 +121,23 @@ export default function LabQuiz() {
     }
 
     function Answer(questionNumber) {
-
+        
         let answerState = [answerOne, answerTwo, answerThree, answerFour, answerFive];
         let userAnswer = JSON.parse(answerState[questionNumber - 1]); //convert it to number
 
         //Create Mathematical Expressions for solutions, order by the question
-        const solutionTwo = `{\\large 85 * 0.1 = 8.5~ \\mathrm{mm} = 0.0085~ \\mathrm{m} }`; //needs tex to add space before units
+        const solutionTwo = `{\\large 85 \\cdot 0.1 = 8.5~ \\mathrm{mm} = 0.0085~ \\mathrm{m} }`; //needs tex to add space before units
 
         const solutionThree = `{\\large \\Delta p = \\rho g h  }`;
-        const solutionThree_two = `{\\large = 1000~\\mathrm{kg m^{-3}} ~ * ~ 9.81~\\mathrm{ms^{-1}} ~ * ~ 0.0085~m }`;
+        const solutionThree_two = `{\\large = 1000~\\mathrm{kg m^{-3}} ~ \\cdot ~ 9.81~\\mathrm{ms^{-1}} ~ \\cdot ~ 0.0085~m }`;
         const solutionThree_three = `{\\large = 83.39~ \\mathrm{Pa} }`;
 
-        const solutionFour = `{\\large \\rho = 1.205~\\mathrm{kgm^{-3}} }`;
+        const solutionFour = `{\\large \\rho = 1.2~\\mathrm{kgm^{-3}} }`;
+        const solutionFour_two = `{\\large Pv=RT}`;
+        const solutionFour_three = `{\\large \\rho = \\frac{1}{v}=\\frac{101\\cdot 10^{3}}{287 \\cdot (273+21)} }`;
 
-        const solutionFive = `{\\large p_\\mathrm{total} = p_\\mathrm{static} + \\frac{\\rho * v^2}{2} }`;
-        const solutionFive_two = `{\\large v = \\sqrt{\\frac{\\Delta p*2}{\\rho}} }`;
+        const solutionFive = `{\\large p_\\mathrm{total} = p_\\mathrm{static} + \\frac{\\rho \\cdot v^2}{2} }`;
+        const solutionFive_two = `{\\large v = \\sqrt{\\frac{\\Delta p\\cdot 2}{\\rho}} }`;
         const solutionFive_three = ` {\\large = 11.8~\\mathrm{ms^{-1}} }`;
 
         //for answers handling and checking
@@ -154,8 +156,13 @@ export default function LabQuiz() {
                     <MathJax.Context input='tex'><MathJax.Node>{solutionThree_three}</MathJax.Node></MathJax.Context>
                 </center>,
 
-                <center>There are two ways you can solve this. Either refer to the Data and Formulae Booklet, Table E.16 and approximate to the dry air density at 20°C or use the ideal gas relation to solve. Hence giving:
-                <br></br>
+                <center>Using the ideal gas relation,
+
+                    <br></br>
+                    <MathJax.Context input='tex'><MathJax.Node>{solutionFour_two}</MathJax.Node></MathJax.Context>
+                    <br></br>
+                    <MathJax.Context input='tex'><MathJax.Node>{solutionFour_three}</MathJax.Node></MathJax.Context>
+                    <br></br>
                     <MathJax.Context input='tex'><MathJax.Node>{solutionFour}</MathJax.Node></MathJax.Context>
                 </center>,
 
@@ -170,7 +177,7 @@ export default function LabQuiz() {
 
         }
 
-        if (math.round(userAnswer, 1) === solutions.answer[questionNumber - 1]) { //minus one here because index starts at 1 for easier reading
+        if (math.round(userAnswer, 1) >= solutions.answer[questionNumber - 1] - 0.5 && math.round(userAnswer, 1) <= solutions.answer[questionNumber - 1] + 0.5 ) { //minus one here because index starts at 1 for easier reading
             return (
                 <div>
                     <p style={{color:"#66A40A"}}>Correct!</p>
@@ -227,7 +234,7 @@ export default function LabQuiz() {
                 </div>
 
                 <div className="quizQuestion">
-                    <p>2. The manometer is sloped and has a scale factor of 0.1, what is the vertical height? (in mm)</p>
+                    <p>2. The manometer is sloped and has a scale factor of 0.1, what is the vertical height? (in mm, to 1 d.p.)</p>
                     <form onSubmit={submitHandlerTwo}>
                         <input
                             name="answer"
@@ -241,7 +248,7 @@ export default function LabQuiz() {
                 </div>
 
                 <div className="quizQuestion">
-                    <p>3. The manometer contains water (density 1000kg/m3). What is the pressure difference has it measured? (in Pa, answer to 3 d.p.)</p>
+                    <p>3. The manometer contains water (density 1000kg/m3). What is the pressure difference it measured? (in Pa, answer to 3 d.p.)</p>
                     <form onSubmit={submitHandlerThree}>
                         <input
                             name="answer"
@@ -255,7 +262,7 @@ export default function LabQuiz() {
                 </div>
 
                 <div className="quizQuestion">
-                    <p>4. Given a temperature of 21°C and under atmospheric pressure, estimate the density of air in the wind tunnel to 3 d.p. (in S.I. units).</p>
+                    <p>4. Given a temperature of 21°C and under atmospheric pressure of 101 kPa, estimate the density of air in the wind tunnel to 3 d.p. (in S.I. units).</p>
                     <form onSubmit={submitHandlerFour}>
                         <input
                             name="answer"

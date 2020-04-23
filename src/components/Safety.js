@@ -68,10 +68,10 @@ export default function Safety(props) {
                 }
             </div>
 
-            <Sidebar counter={props.counter} />
-            {completeSafetySection === 'notdone' ? <ProgressButton progress={props.progress} toggle={turnOffSafetyButton} name="theory" /> :
+            <Sidebar counter={props.counter} name="Safety"/>
+            {completeSafetySection === 'notdone' ? <a href="/"><ProgressButton progress={props.progress} toggle={turnOffSafetyButton} name="theory" /></a> :
                 <div className="sectionCompletedContainer">
-                    <div className="sectionCompleted">You have completed this section. Move on to your next section of choice</div>
+                    <div className="sectionCompleted">You have completed this section.</div>
                 </div>}
         </div>
     )

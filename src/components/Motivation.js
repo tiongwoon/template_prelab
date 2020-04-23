@@ -28,12 +28,12 @@ export default function Motivation(props) {
                 <center style={{ fontWeight: "900" }}>Choose one to watch.</center>
             </div>
             <VideoWrapper />
-            <Sidebar counter={props.counter} />
+            <Sidebar counter={props.counter} name="Motivation"/>
 
             {completeMotivationSection === 'notdone'
-                ? <ProgressButton progress={props.progress} toggle={turnOffMotivationButton} name="dragbalance" /> 
+                ? <a href="/theory"><ProgressButton progress={props.progress} toggle={turnOffMotivationButton} name="dragbalance" /> </a>
                 : <div className="sectionCompletedContainer">
-                    <div className="sectionCompleted">Section Completed. Proceed to your next section of choice</div>
+                    <div className="sectionCompleted">You have completed this section.</div>
                   </div>
             }
         </div>

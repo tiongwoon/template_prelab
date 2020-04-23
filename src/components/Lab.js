@@ -66,7 +66,7 @@ export default function Lab(props) {
 
     return (
         <div>
-            <Header name="Lab" />
+            <Header name="Lab Equipments" />
             <center className="textArea">In the lab, there are a few equipments which you will need to familarise its working principle in order to fully benefit from the lab session.
             <br></br>
              In this section, you will be introduce to the equipment, as well as answering some questions to strengthen your understanding.<br></br><span style={{fontWeight:"900"}}>Click on the dots on the third image to learn more.</span>  </center>
@@ -104,10 +104,10 @@ export default function Lab(props) {
                 </ModalContent>
             </Modal>
             <LabQuiz />
-            <Sidebar counter={props.counter} />
-            {completeLabSection === 'notdone' ? <ProgressButton progress={props.progress} toggle={turnOffLabButton} name="theory" /> :
+            <Sidebar counter={props.counter} name="Lab" />
+            {completeLabSection === 'notdone' ? <a href="/canvas"><ProgressButton progress={props.progress} toggle={turnOffLabButton} name="theory" /></a> :
                 <div className="sectionCompletedContainer">
-                    <div className="sectionCompleted">You have completed this section. Move on to your next section of choice</div>
+                    <div className="sectionCompleted">You have completed this section. </div>
                 </div>}
 
         </div>

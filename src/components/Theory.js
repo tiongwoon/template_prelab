@@ -21,10 +21,10 @@ export default function Theory(props) {
             <Header name="Theory" />
            
             <TheoryQuizBox />
-            <Sidebar counter={props.counter} />
-            {completeTheorySection === 'notdone' ? <ProgressButton progress={props.progress} toggle={turnOffTheoryButton} name="theory"/> : 
+            <Sidebar counter={props.counter} name="Theory" />
+            {completeTheorySection === 'notdone' ? <a href="/lab"><ProgressButton progress={props.progress} toggle={turnOffTheoryButton} name="theory"/> </a>: 
                 <div className="sectionCompletedContainer">
-                    <div className="sectionCompleted">You have completed this section. Move on to your next section of choice</div>
+                    <div className="sectionCompleted">You have completed this section.</div>
                 </div> }
         </div>
     )

@@ -4,6 +4,7 @@ import Header from './Header';
 import Sidebar from '../Sidebar';
 import MathJax from 'react-mathjax2';
 import ProgressButton from './ProgressButton';
+import * as math from 'mathjs';
 
 export default function Canvas(props) {
     //for progress button state
@@ -11,7 +12,7 @@ export default function Canvas(props) {
 
     function turnOffDragBalanceButton() {
         setcompleteDragBalanceSection('done');
-      
+
     }
 
     useEffect(() => {
@@ -52,7 +53,7 @@ export default function Canvas(props) {
     //group of functions for checkboxes and button
 
     function onAirFlow() {
-        setdragForce(2100);
+        setdragForce(60);
         setair(true);
     }
 
@@ -87,9 +88,9 @@ export default function Canvas(props) {
         setcounterFive(counterFive + 1);
 
         if (counterFive % 2 === 0) {
-            setmass(mass + 5);
+            setmass(mass + 3);
         } else if (counterFive > 0 && counterFive % 2 === 1) {
-            setmass(mass - 5);
+            setmass(mass - 3);
         }
     }
 
@@ -97,9 +98,9 @@ export default function Canvas(props) {
         setcounterTen(counterTen + 1);
 
         if (counterTen % 2 === 0) {
-            setmass(mass + 10);
+            setmass(mass + 4);
         } else if (counterTen > 0 && counterTen % 2 === 1) {
-            setmass(mass - 10);
+            setmass(mass - 4);
         }
     }
 
@@ -107,9 +108,9 @@ export default function Canvas(props) {
         setcounterHundred(counterHundred + 1);
 
         if (counterHundred % 2 === 0) {
-            setmass(mass + 100);
+            setmass(mass + 5);
         } else if (counterHundred > 0 && counterHundred % 2 === 1) {
-            setmass(mass - 100);
+            setmass(mass - 5);
         }
     }
 
@@ -139,9 +140,9 @@ export default function Canvas(props) {
         setcountersecondFive(countersecondFive + 1);
 
         if (countersecondFive % 2 === 0) {
-            setmass(mass + 5);
+            setmass(mass + 3);
         } else if (countersecondFive > 0 && countersecondFive % 2 === 1) {
-            setmass(mass - 5);
+            setmass(mass - 3);
         }
     }
 
@@ -149,9 +150,9 @@ export default function Canvas(props) {
         setcountersecondTen(countersecondTen + 1);
 
         if (countersecondTen % 2 === 0) {
-            setmass(mass + 10);
+            setmass(mass + 4);
         } else if (countersecondTen > 0 && countersecondTen % 2 === 1) {
-            setmass(mass - 10);
+            setmass(mass - 4);
         }
     }
 
@@ -159,9 +160,9 @@ export default function Canvas(props) {
         setcountersecondHundred(countersecondHundred + 1);
 
         if (countersecondHundred % 2 === 0) {
-            setmass(mass + 100);
+            setmass(mass + 5);
         } else if (countersecondHundred > 0 && countersecondHundred % 2 === 1) {
-            setmass(mass - 100);
+            setmass(mass - 5);
         }
     }
 
@@ -169,7 +170,7 @@ export default function Canvas(props) {
     //functions to draw components
     //universal function to draw spring, auto calculate the coordinates 
     //when rotating clockwise
-    function drawSpring(angle, momentArm, ctx, mass) {
+    function drawSpring(angle, momentArm, ctx) {
 
         var initialHeight = 40;
         //var initialWidth = 12.5;
@@ -209,7 +210,7 @@ export default function Canvas(props) {
         ctx.stroke();
     }
 
-    function drawDragBalance(ctx,mass) {
+    function drawDragBalance(ctx, mass) {
         //draw the horizontal main bar
         ctx.fillStyle = "grey";
         ctx.fillRect(10, 90, size.length, size.width);
@@ -239,7 +240,7 @@ export default function Canvas(props) {
         //draw the weight
         ctx.fillStyle = "gold";
         ctx.beginPath();
-        ctx.fillRect(460, 85, 40, -(mass*0.6));
+        ctx.fillRect(460, 85, 40, -(mass * 3));
 
         //write the mass on the weight
         ctx.fillStyle = "black";
@@ -396,7 +397,7 @@ export default function Canvas(props) {
 
         let angle;
         //angle = 0.05 - (1698.84 - mass * 9.81) / 10825.2;
-        angle = (-dragForce + mass * 9.81) / 13000;
+        angle = (-dragForce + mass * 9.81) / 760;
         setdialGaugeAngle(angle * 7);
 
         //rotate
@@ -409,7 +410,7 @@ export default function Canvas(props) {
         ctx.translate(260, 135);
         ctx.rotate(angle);
         ctx.translate(-260, -135);
-        drawDragBalance(ctx,mass);
+        drawDragBalance(ctx, mass);
 
         //reset the canvas to default
         ctx.translate(260, 135);
@@ -419,70 +420,82 @@ export default function Canvas(props) {
 
     //function to handle the quiz
 
-    const [valueOne, setvalueOne] = useState(''); 
+    const [valueOne, setvalueOne] = useState('');
     const [valueTwo, setvalueTwo] = useState(''); //to hold the state for question 2
+    const [valueThree, setvalueThree] = useState('');
 
     const [show, setShow] = useState(false);
     const [showTwo, setShowTwo] = useState(false); //stores the state for each button
+    const [showThree, setShowThree] = useState(false);
 
     const [answerOne, setanswerOne] = useState('');
     const [answerTwo, setanswerTwo] = useState('');
+    const [answerThree, setanswerThree] = useState('');
 
     function submitHandler(event, questionNumber) {
-        if (questionNumber == 1){
+        if (questionNumber === 1) {
             let eventValueOne = valueOne;
             setanswerOne(eventValueOne);
             event.preventDefault();
-        } else if (questionNumber == 2){
+        } else if (questionNumber === 2) {
             setanswerTwo(valueTwo);
+            event.preventDefault();
+        } else if (questionNumber === 3) {
+            setanswerThree(valueThree);
             event.preventDefault();
         }
     }
 
     function changeHandler(event, questionNumber) {
-        if (questionNumber == 1){
-        setvalueOne(event.target.value); //this function is to bind the user input to state so that we can use it to check answers and holds the single source of truth      
-        } else if (questionNumber == 2) {
+        if (questionNumber === 1) {
+            setvalueOne(event.target.value); //this function is to bind the user input to state so that we can use it to check answers and holds the single source of truth      
+        } else if (questionNumber === 2) {
             setvalueTwo(event.target.value);
+        } else if (questionNumber === 3) {
+            setvalueThree(event.target.value);
         }
     }
 
     //const handleToggle = () => setShow(!show);
 
     function handleToggle(questionNumber) {
-        if (questionNumber == 1){
+        if (questionNumber === 1) {
             setShow(!show);
-        } else if (questionNumber == 2){
+        } else if (questionNumber === 2) {
             setShowTwo(!showTwo);
+        } else if (questionNumber === 3) {
+            setShowThree(!showThree);
         }
     }
 
     //solution for the quiz
-    function Solution(props){
-        if (props.questionNumber == 1) {
-        return (
-            <center>
-                To achieve balance, the drag force has to be equal to the weight so that moment per length (due to equal moment arm) is 0,
-                <br></br><br></br>
-                <MathJax.Context><MathJax.Node>F_(Drag)=mg</MathJax.Node></MathJax.Context>
-                <br></br><br></br>
-                <MathJax.Context><MathJax.Node>C_D*rho*u^2/2*(pi*D^2)/4=m*g</MathJax.Node></MathJax.Context>
-                <br></br><br></br>
-                Substituting the given values and solving for <MathJax.Context><MathJax.Node>m</MathJax.Node></MathJax.Context>, 
-                <br></br><br></br>
-                <MathJax.Context><MathJax.Node>m = 215g (3 s.f.)</MathJax.Node></MathJax.Context>
-            </center>
-        )
-        } else if (props.questionNumber == 2){
-            return(
+    function Solution(props) {
+        if (props.questionNumber === 1) {
+            return (
                 <center>
-                <MathJax.Context><MathJax.Node>F_(Drag)=0.210*9.81=2.0601N</MathJax.Node></MathJax.Context>
-                <br></br><br></br>
-                Rearranging the drag equation from the previous question, substituting the given values and solving for <MathJax.Context><MathJax.Node>C_D</MathJax.Node></MathJax.Context>,
-                <br></br><br></br>
-                <MathJax.Context><MathJax.Node>C_D = 1.14</MathJax.Node></MathJax.Context>
-                <br></br><br></br>
+                    Reading off the dial gauge in the image above gives a mass of 6g.
+
+                </center>
+            )
+        } else if (props.questionNumber === 2) {
+            return (
+                <center>
+                    Using the equation for drag, <br></br>
+                    <MathJax.Context><MathJax.Node>C_D*rho*u^2/2*(pi*D^2)/4=m*g</MathJax.Node></MathJax.Context>
+                    <br></br><br></br>
+                    Substituting the given values and solving for <MathJax.Context><MathJax.Node>C_D</MathJax.Node></MathJax.Context>,
+                    <br></br><br></br>
+                    <MathJax.Context><MathJax.Node>C_D = 0.277</MathJax.Node></MathJax.Context>
+                    <br></br><br></br>
                 In the actual lab session, the airflow speed is not readily given. You will need to work it out from the technique in the 'Lab' section of this website, ie. using the manometer and pitot tube'
+                </center>
+            )
+        } else if (props.questionNumber === 3) {
+            return (
+                <center>
+                    <MathJax.Context><MathJax.Node>F_(Drag)=mg</MathJax.Node></MathJax.Context>
+                    <br></br><br></br>
+                    <MathJax.Context><MathJax.Node>F_(Drag)=0.006*9.81=0.05886N</MathJax.Node></MathJax.Context>
                 </center>
             )
         }
@@ -491,44 +504,54 @@ export default function Canvas(props) {
 
 
     function Answer(questionNumber) {
-        if (questionNumber == 1) {
-            if (answerOne <= '220' && answerOne >= '210') {
+        if (questionNumber === 1) {
+            if (math.round(answerOne) == '6') {
                 return (
                     <div>
                         <p>Correct!</p>
                         <Button style={showSolutionButtonStyle} onClick={() => handleToggle(1)}>Show solution</Button>
                         <Collapse isOpen={show} marginTop="0.7em">
                             <br></br>
-                        <Solution questionNumber={1} />
-                    </Collapse>
+                            <Solution questionNumber={1} />
+                        </Collapse>
                     </div>
                 )
             } else {
                 return (
                     <div>
                         <p>Wrong, try again.</p>
-                        <Button style={showSolutionButtonStyle} onClick={()=>handleToggle(1)}>Show solution</Button>
+                        <Button style={showSolutionButtonStyle} onClick={() => handleToggle(1)}>Show solution</Button>
                         <Collapse isOpen={show} marginTop="0.7em">
                             <br></br>
-                    <Solution questionNumber={1}/>
-                    </Collapse>
+                            <Solution questionNumber={1} />
+                        </Collapse>
                     </div>
                 )
             }
-        } else if (questionNumber==2){
-                return (
-                    <div>
-                    <p>{answerTwo =='1.14' ? 'Correct' : 'Wrong, try again.' }</p>
-                    <Button style={showSolutionButtonStyle} onClick={()=>handleToggle(2)}>Show solution</Button>
-                        <Collapse isOpen={showTwo} marginTop="0.7em">
-                            <br></br>
+        } else if (questionNumber === 2) { //this is question number 3, drag coefficient
+            return (
+                <div>
+                    <p>{math.round(answerTwo, 2) == '0.28' ? 'Correct' : 'Wrong, try again.'}</p>
+                    <Button style={showSolutionButtonStyle} onClick={() => handleToggle(2)}>Show solution</Button>
+                    <Collapse isOpen={showTwo} marginTop="0.7em">
+                        <br></br>
                         <Solution questionNumber={2} />
                     </Collapse>
-                    </div>
-                )
-            
-        }
+                </div>
+            )
 
+        } else if (questionNumber === 3) {
+            return (
+                <div>
+                    <p>{math.round(answerThree, 3) == '0.059' ? 'Correct' : 'Wrong, try again.'}</p>
+                    <Button style={showSolutionButtonStyle} onClick={() => handleToggle(3)}>Show solution</Button>
+                    <Collapse isOpen={showThree} marginTop="0.7em">
+                        <br></br>
+                        <Solution questionNumber={3} />
+                    </Collapse>
+                </div>
+            )
+        }
     }
 
     //anything that needs to change and respond, put in here
@@ -540,7 +563,6 @@ export default function Canvas(props) {
         if (air) {
             drawVelocityProfile(ctx);
         }
-
     }) //end of useEffect
 
     return (
@@ -550,39 +572,39 @@ export default function Canvas(props) {
             <canvas style={canvasPosition} ref={canvasRef} width={525} height={325}>please update</canvas>
             <div style={checkBoxContainer}>
                 <div>Try to balance the force by adding weight to the other side of the drag balance.
-                    <br></br><span style={{fontWeight:"850"}}> HEADS UP: Do take note of the initial position of the dial gauge pointer so that you know when it is balanced. </span></div>
-                <div style={{display:"flex", flexDirection:"row", justifyContent:"space-around"}}>
-                <Stack style={checkboxStyle} spacing={3}>
-                    <Checkbox borderColor="#3A3A3A" onChange={checkBoxOne} variantColor="yellow">1g</Checkbox>
-                    <Checkbox borderColor="#3A3A3A" onChange={checkBoxTwo} variantColor="yellow">2g</Checkbox>
-                    <Checkbox borderColor="#3A3A3A" onChange={checkBoxFive} variantColor="yellow">5g</Checkbox>
-                    <Checkbox borderColor="#3A3A3A" onChange={checkBoxTen} variantColor="yellow">10g</Checkbox>
-                    <Checkbox borderColor="#3A3A3A" onChange={checkBoxHundred} variantColor="yellow">100g</Checkbox>
-                </Stack>
-                <Stack style={checkboxStyle} spacing={3}>
-                    <Checkbox borderColor="#3A3A3A" onChange={checkBoxsecondOne} variantColor="yellow">1g</Checkbox>
-                    <Checkbox borderColor="#3A3A3A" onChange={checkBoxsecondTwo} variantColor="yellow">2g</Checkbox>
-                    <Checkbox borderColor="#3A3A3A" onChange={checkBoxsecondFive} variantColor="yellow">5g</Checkbox>
-                    <Checkbox borderColor="#3A3A3A" onChange={checkBoxsecondTen} variantColor="yellow">10g</Checkbox>
-                    <Checkbox borderColor="#3A3A3A" onChange={checkBoxsecondHundred} variantColor="yellow">100g</Checkbox>
-                </Stack>
+                    <br></br><span style={{ fontWeight: "850" }}> HEADS UP: Do take note of the initial position of the dial gauge pointer so that you know when it is balanced. </span></div>
+                <div style={{ display: "flex", flexDirection: "row", justifyContent: "space-around" }}>
+                    <Stack style={checkboxStyle} spacing={3}>
+                        <Checkbox borderColor="#3A3A3A" onChange={checkBoxOne} variantColor="yellow">1g</Checkbox>
+                        <Checkbox borderColor="#3A3A3A" onChange={checkBoxTwo} variantColor="yellow">2g</Checkbox>
+                        <Checkbox borderColor="#3A3A3A" onChange={checkBoxFive} variantColor="yellow">3g</Checkbox>
+                        <Checkbox borderColor="#3A3A3A" onChange={checkBoxTen} variantColor="yellow">4g</Checkbox>
+                        <Checkbox borderColor="#3A3A3A" onChange={checkBoxHundred} variantColor="yellow">5g</Checkbox>
+                    </Stack>
+                    <Stack style={checkboxStyle} spacing={3}>
+                        <Checkbox borderColor="#3A3A3A" onChange={checkBoxsecondOne} variantColor="yellow">1g</Checkbox>
+                        <Checkbox borderColor="#3A3A3A" onChange={checkBoxsecondTwo} variantColor="yellow">2g</Checkbox>
+                        <Checkbox borderColor="#3A3A3A" onChange={checkBoxsecondFive} variantColor="yellow">3g</Checkbox>
+                        <Checkbox borderColor="#3A3A3A" onChange={checkBoxsecondTen} variantColor="yellow">4g</Checkbox>
+                        <Checkbox borderColor="#3A3A3A" onChange={checkBoxsecondHundred} variantColor="yellow">5g</Checkbox>
+                    </Stack>
                 </div>
+
+            </div>
+
+            {!air ? <Button style={buttonStyle} onClick={onAirFlow}>Turn On Air Flow</Button> : <Button style={altButtonStyle} onClick={offAirFlow}>Turn Off Air Flow</Button>}
+
+            <div style={quizContainerStyle}>
                 <div style={addMargin}>
                     Here are some values you might need for the question below.
                     <ul>
-                        <li>Disc Diameter, <MathJax.Context><MathJax.Node>D=16.3cm</MathJax.Node></MathJax.Context></li>
-                        <li>Drag Coefficient, <MathJax.Context><MathJax.Node>C_D=1.17</MathJax.Node></MathJax.Context></li>
+                        <li>Disc Diameter, <MathJax.Context><MathJax.Node>D=5.6cm</MathJax.Node></MathJax.Context></li>
                         <li>Air Density, <MathJax.Context><MathJax.Node>rho=1.2kgm^(-3)</MathJax.Node></MathJax.Context></li>
-                        <li>Air flow speed, <MathJax.Context><MathJax.Node>u=12ms^(-1)</MathJax.Node></MathJax.Context></li>
+                        <li>Air flow speed, <MathJax.Context><MathJax.Node>U=12ms^(-1)</MathJax.Node></MathJax.Context></li>
                         <li>Gravity, <MathJax.Context><MathJax.Node>g=9.81ms^(-2)</MathJax.Node></MathJax.Context></li>
                         <li>The distance between the mass slot and the pivot is the same as that between the center of the disc and the pivot.</li>
                     </ul>
                 </div>
-            </div>
-
-            {!air ? <Button style={buttonStyle} onClick={onAirFlow}>Turn On Air Flow</Button> : <Button style={altButtonStyle} onClick={offAirFlow}>Turn Off Air Flow</Button>}
-            
-            <div style={quizContainerStyle}>
                 <div>1. Can you identify the right amount of mass, in g, to add in order to balance the drag force?</div>
                 <form onSubmit={(event) => submitHandler(event, 1)}>
                     <input
@@ -593,9 +615,21 @@ export default function Canvas(props) {
                     />
                     <input type="submit" value="Check Answer" style={checkButtonStyle} /> <br></br>
                 </form>
-                {answerOne ? Answer(1) : null} 
-                
-                <div>2. Given that the mass to balance the drag force is 210 g, what is the drag coefficient of the disc?</div>
+                {answerOne ? Answer(1) : null}
+
+                <div>2. What is the drag force?</div>
+                <form onSubmit={(event) => submitHandler(event, 3)}>
+                    <input
+                        name="answer"
+                        type="string"
+                        onChange={(event) => changeHandler(event, 3)}
+                        style={inputBoxStyle}
+                    />
+                    <input type="submit" value="Check Answer" style={checkButtonStyle} /> <br></br>
+                </form>
+                {answerThree ? Answer(3) : null}
+
+                <div>3. What is the drag coefficient of the disc? (Compare its value to the one in the Theory section. What could be the reason they are different?)</div>
                 <form onSubmit={(event) => submitHandler(event, 2)}>
                     <input
                         name="answer"
@@ -605,18 +639,19 @@ export default function Canvas(props) {
                     />
                     <input type="submit" value="Check Answer" style={checkButtonStyle} /> <br></br>
                 </form>
-                {answerTwo ? Answer(2) : null} 
+                {answerTwo ? Answer(2) : null}
             </div>
-            
-            <Sidebar counter={props.counter} />
-            {completeDragBalanceSection ==='notdone' ? <ProgressButton progress={props.progress} toggle={turnOffDragBalanceButton}/> : 
+
+            <Sidebar counter={props.counter} name="Drag Balance" />
+            {completeDragBalanceSection === 'notdone' ? <a href="/safety"><ProgressButton progress={props.progress} toggle={turnOffDragBalanceButton} /> </a> :
                 <div className="sectionCompletedContainer">
-                    <div className="sectionCompleted">You have completed this section. Move on to your next section of choice</div>
-                </div> }
+                    <div className="sectionCompleted">You have completed this section.</div>
+                </div>}
         </div>
     )
 
 }
+
 const canvasPosition = {
     position: "relative",
     left: "20vw",
@@ -673,7 +708,7 @@ const showSolutionButtonStyle = {
     border: "none",
     borderRadius: "4px",
     color: "#003E74",
-    cursor:"pointer"
+    cursor: "pointer"
 }
 
 const checkButtonStyle = {
@@ -684,7 +719,7 @@ const checkButtonStyle = {
     padding: "1em",
     margin: "1em",
     boxShadow: "0px 0px 10px 0px rgba(0,0,0,0.15)",
-    cursor:"pointer"
+    cursor: "pointer"
 }
 
 const inputBoxStyle = {
@@ -696,13 +731,15 @@ const inputBoxStyle = {
 
 const addMargin = {
     marginTop: "2em",
+    marginBottom: "2em",
 }
 
 const quizContainerStyle = {
     position: "absolute",
-    left:"20vw",
-    top: "115vh",
-    display:"block", 
-    marginBottom:"4.5em",
+    left: "20vw",
+    top: "90vh",
+    display: "block",
+    marginBottom: "4.5em",
 }
+
 

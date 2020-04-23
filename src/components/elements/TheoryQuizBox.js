@@ -102,7 +102,9 @@ export default function TheoryQuizBox() {
         const lineTwo = `{= \\rho ~ \\int\\limits_{0}^{R}u(r) \\cdot2 \\pi r ~ dr}`;
         const lineThree = `{F_\\mathrm{drag} ~=~U_0 [~\\rho ~ \\int\\limits_{0}^{R} u(r) \\cdot 2 \\pi r ~ dr~] ~ - ~ \\rho \\int\\limits_{0}^{R} u(r)^{2} \\cdot 2\\pi r ~ dr} `;
         const lineFour =  `{F_\\mathrm{drag} ~=~ 2 \\pi \\rho \\int\\limits_{0}^{R} u \\cdot (U_{0}-u) \\cdot r ~ dr}`;
-        const lineFive = `{=~ 0.0543~N~ (3 s.f.)}`;
+        const lineFive = `{\\int\\limits_{0}^{R} u \\cdot (U_{0}-u) \\cdot r ~ dr~~ \\mathrm{is ~approximated~ to}~~ \\frac{\\Delta x}{2}[y_{1} + 2(y_{2}+y_{3}) + y_{4}]}`;
+        const lineSix = `{ \\mathrm{where} ~~ y=u(r) \\cdot (U_{0}-u(r)) \\cdot r}`;
+        const lineSeven = `{=~ 0.0543~N~ (3 s.f.)}`;
        
         const solutionTwo = `{F_\\mathrm{{drag}} ~=~ C_\\mathrm{D} \\times \\frac{\\rho {v^2}}{2} \\times A}`;
         const solutionTwo_two = `{C_\\mathrm{D} = 0.255}`;
@@ -111,7 +113,7 @@ export default function TheoryQuizBox() {
 
         //the object for answers
         const solutions = {
-            answer: [0.0543, 0.255],
+            answer: [0.05, 0.26],
 
             working: [
                 <div>
@@ -131,9 +133,15 @@ export default function TheoryQuizBox() {
                     Which simplifies to <br></br>
                     <MathJax.Context input='tex'> 
                         <MathJax.Node>{lineFour}</MathJax.Node>
-                    </MathJax.Context> <br></br> Since we are given the data, we can use numerical integral methods to compute the integral, for this solution we will use trapezoid rule to compute. Giving the answer
+                    </MathJax.Context> <br></br> Since we are given the data, we can use numerical integral methods to compute the integral, for this solution we will use trapezoid rule to compute. But you can also use other techniques such as the rectangule approximation.
                     <MathJax.Context input='tex'> 
                         <center> <MathJax.Node>{lineFive}</MathJax.Node> </center>
+                    </MathJax.Context> 
+                    <MathJax.Context input='tex'> 
+                        <center> <MathJax.Node>{lineSix}</MathJax.Node> </center>
+                    </MathJax.Context> 
+                    <MathJax.Context input='tex'> 
+                        <center> <MathJax.Node>{lineSeven}</MathJax.Node> </center>
                     </MathJax.Context> 
                 </div>,
 
@@ -150,7 +158,7 @@ export default function TheoryQuizBox() {
             ]
         }
 
-        if (math.round(userAnswer, 2) === solutions.answer[questionNumber - 1]) { //minus one here because index starts at 1 for easier reading
+        if (math.round(userAnswer, 2) <= solutions.answer[questionNumber - 1]*1.25 && math.round(userAnswer, 2) >= solutions.answer[questionNumber - 1]/1.25  ) { //setting a range here to allow for error
             return (
                 <div>
                     <p style={{color:"#66A40A"}}>Correct!</p>

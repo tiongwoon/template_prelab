@@ -22,7 +22,7 @@ export class ProgressButton extends Component {
                     onClick={this.clickHandler}
                     type="button"
                 >
-                    Complete Section
+                    Complete and Proceed
                 </button>
             </div>
         )
@@ -41,9 +41,10 @@ const buttonStyle = {
     position: "fixed",
     left: "0vw",
     bottom: "0",
-    fontWeight: "bold",
+    fontWeight: "900",
     display: "inline-block",
     cursor: "pointer",
+    width: "10vw",
 }
 
 const bottomBar = {

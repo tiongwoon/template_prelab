@@ -49,7 +49,7 @@ export default function Home(props) {
                     </div>
                 </div>
             </Collapse>
-            <Sidebar counter={props.counter} />
+            <Sidebar counter={props.counter} name="Home" />
         </div>
     )
 }

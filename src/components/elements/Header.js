@@ -17,7 +17,6 @@ export default Header
 
 const headerStyle = {
     position: "relative",
-    left: "50%",
     top: "3vh",
     fontSize: "3em", //browser default is 16, which is 1em
     fontWeight: "900",
@@ -26,8 +25,9 @@ const headerStyle = {
 }
 
 const topBar = {
-    width: "100%",
     height: "15vh",
     top: "0",
     backgroundColor: "#003B73",
+    textAlign: "center",
+    marginLeft:"15vw",
 }
