@@ -398,7 +398,7 @@ export default function Canvas(props) {
         let angle;
         //angle = 0.05 - (1698.84 - mass * 9.81) / 10825.2;
         angle = (-dragForce + mass * 9.81) / 760;
-        setdialGaugeAngle(angle * 7);
+        setdialGaugeAngle(angle * 40);
 
         //rotate
         ctx.clearRect(0, 0, 525, 350);
@@ -605,7 +605,7 @@ export default function Canvas(props) {
                         <li>The distance between the mass slot and the pivot is the same as that between the center of the disc and the pivot.</li>
                     </ul>
                 </div>
-                <div>1. Can you identify the right amount of mass, in g, to add in order to balance the drag force?</div>
+                <div style={addMargin}>1. Can you identify the right amount of mass, in g, to add in order to balance the drag force?</div>
                 <form onSubmit={(event) => submitHandler(event, 1)}>
                     <input
                         name="answer"
@@ -617,7 +617,7 @@ export default function Canvas(props) {
                 </form>
                 {answerOne ? Answer(1) : null}
 
-                <div>2. What is the drag force?</div>
+                <div style={addMargin}>2. What is the drag force?</div>
                 <form onSubmit={(event) => submitHandler(event, 3)}>
                     <input
                         name="answer"
@@ -629,7 +629,7 @@ export default function Canvas(props) {
                 </form>
                 {answerThree ? Answer(3) : null}
 
-                <div>3. What is the drag coefficient of the disc? (Compare its value to the one in the Theory section. What could be the reason they are different?)</div>
+                <div style={addMargin}>3. What is the drag coefficient of the disc? (Compare its value to the one in the Theory section. What could be the reason they are different?)</div>
                 <form onSubmit={(event) => submitHandler(event, 2)}>
                     <input
                         name="answer"
@@ -731,7 +731,6 @@ const inputBoxStyle = {
 
 const addMargin = {
     marginTop: "2em",
-    marginBottom: "2em",
 }
 
 const quizContainerStyle = {
