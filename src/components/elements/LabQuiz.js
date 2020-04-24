@@ -320,10 +320,10 @@ const manometerStyle = {
 }
 
 const showSolutionButtonStyle = {
-    backgroundColor: "#3A3A3A",
+    backgroundColor: "#D4EFFC",
     border: "none",
     borderRadius: "4px",
-    color: "#FFD545",
+    color: "#003E74",
     cursor: "pointer"
 }
 
