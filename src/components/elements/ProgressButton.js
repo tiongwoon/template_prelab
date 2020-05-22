@@ -1,59 +1,102 @@
-import React, { Component } from 'react'
+import React from "react";
+import { navigate } from "@reach/router";
 
-export class ProgressButton extends Component {
+export default function ProgressButton(props) {
+  // for the logic of the page navigation so that user will be redirected to an incomplete section when clicked
+  //initialise the array, each element will be deleted when the button is clicked at their page
+  
 
-    constructor(props) {
-        super(props);
-        this.clickHandler = this.clickHandler.bind(this);
-    }
+  //const [nextSection, setNextSection] = useState(indices);
 
-    clickHandler(){
-        this.props.progress();
-        this.props.toggle();
-        
-    }
+  //testing out the custom hooks
+  /**
+   *   function usePersistedState(key, defaultValue) {
+    const [state, setState] = React.useState(
+      JSON.parse(localStorage.getItem(key)) || defaultValue
+    );
+    useEffect(() => {
+      localStorage.setItem(key, JSON.stringify(state));
+    }, [key, state]);
+    return [state, setState];
+  }
 
-    render() {
-        return (
-            <div style={bottomBar}>
+   * 
+   * 
+   */
 
-                <button
-                    style={buttonStyle}
-                    onClick={this.clickHandler}
-                    type="button"
-                >
-                    Complete and Proceed
-                </button>
-            </div>
-        )
-    }
+  // const { array, getNextSection } = useContext(GlobalContext);
+
+
+  //const [arrayI, setArray] = usePersistedState('array', indices)
+  //to filter out
+  //const newArray = nextSection.filter(name => name != props.sectionName);
+  
+ /** 
+  function indexF (index) {
+    if (index >= 4) {
+        return index = 0
+    } else {return index +1 }
+ }
+ */
+
+ function goTo() {
+
+    const indices = ["motivation", "theory", "lab", "dragbalance", "safety" ];
+    const index = indices.indexOf(props.sectionName);
+
+     if (props.counter <= 3) {
+         if (index >= 4) {
+             navigate(`/${indices[0]}`)
+         } else {
+             navigate(`/${indices[index + 1]}`)
+         }
+     } else {
+         navigate('/')
+     }
+ }
+ 
+  /** 
+  function removePageFromArray() {
+    const newArray = arrayI.filter(name => name != props.sectionName);
+    setArray(newArray);
+    console.log(arrayI);
+  }
+  */ 
+
+  function clickHandler() {
+    props.progress();
+    props.toggle();
+    //this deletes the first element in the array and shift elements forwards
+    goTo();
+  }
+
+  return (
+    <div style={bottomBar}>
+        <button className="completeSectionButton" onClick={clickHandler} type="button">
+          Complete and Proceed
+        </button>
+
+    </div>
+  );
 }
-
-export default ProgressButton
 
 const buttonStyle = {
-    backgroundColor: "#006EAF",
-    color: "#FFFFFF",
-    border: "none",
-    borderRadius: "4px",
-    margin:"2em",
-    padding: "1em",
-    position: "fixed",
-    left: "0vw",
-    bottom: "0",
-    fontWeight: "900",
-    display: "inline-block",
-    cursor: "pointer",
-    width: "10vw",
-}
+  backgroundColor: "#006EAF",
+  color: "#FFFFFF",
+  border: "none",
+  borderRadius: "4px",
+  padding: "0.8em",
+  position: "absolute",
+  fontWeight: "900",
+  cursor: "pointer",
+  width: "70%",
+  left: "15%",
+  fontSize: "1.2em"
+};
 
 const bottomBar = {
-    width: "15vw",
-    backgroundColor: "#3A3A3A",
-    height: "7em",
-    padding: "1em",
-    position: "fixed",
-    left:"0",
-    bottom: "0",
-    display: "inline-block"
-}
+  height: "10vh",
+  marginTop: "20vh",
+  position: "relative",
+  zIndex: "999",
+};

@@ -2,18 +2,26 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  
 }
 
 body {
-  font-family: 'Fira Sans', sans-serif;
+  font-family: "Fira Sans", sans-serif;
   line-height: 1.5;
+}
+
+.headerText {
+  font-size: 3em;
+  position: relative;
+  top: 3vh;
+  font-weight: 900;
+  color: #D4EFFC;
+  display: inline-block;
 }
 
 .hoverBuddy:hover {
   /*box-shadow: 0px 0px 35px -8px ##006EAF;*/
   height: 3.5em;
-  background-color: #9D9D9D;
+  background-color: #9d9d9d;
 }
 
 .hoverBuddy {
@@ -27,34 +35,36 @@ body {
   text-decoration: none;
 }
 
-a:hover, a:visited, a:link 
-{
-    text-decoration: none;
+a:hover,
+a:visited,
+a:link {
+  text-decoration: none;
 }
-
-
 
 .quizContainer {
   display: flex;
   flex-direction: column;
   position: relative;
-  top: 55vh;
-  margin-left: 20vw;
+  top: 10vh;
+  padding-left: 5vw;
+  margin-bottom: 10vh;
 }
 
 .quizQuestion {
   margin-top: 1em;
   margin-bottom: 1em;
+  padding-right: 5vw;
 }
 
 .textArea {
   text-align: left;
   line-height: 1.75;
   position: relative;
-  left: 20vw;
+  padding-left: 5vw;
+  padding-right: 5vw;
   top: 5vh;
-  font-size: 1.1em;
-  width: 75%;
+  font-size: 1em;
+  max-width: 100%;
   font-weight: light;
   display: inline-block;
 }
@@ -62,22 +72,22 @@ a:hover, a:visited, a:link
 .textAreaFloating {
   text-align: left;
   line-height: 1.75;
-  font-size: 1.1em;
-  width: 90%;
+  font-size: 1em;
+  padding-right: 5vw;
+  width: 100%;
   display: inline-block;
 }
 
 .secondaryHeader {
-  font-size: 2em; 
+  font-size: 2em;
   font-weight: 900;
-  color: #3A3A3A;
+  color: #3a3a3a;
 }
 
 .secondaryHeaderContainer {
   position: relative;
-  top: 50vh;
-  margin-left: 20vw;
-
+  top: 10vh;
+  padding-left: 5vw;
 }
 
 .equipmentImage {
@@ -86,59 +96,319 @@ a:hover, a:visited, a:link
 }
 
 .yellowButton {
-  background-color: #3A3A3A;
+  background-color: #3a3a3a;
   border: none;
   border-radius: 4px;
-  color: #006EAF;
+  color: #006eaf;
   margin-top: 1em;
 }
 
 .sectionCompleted {
-  color: #D4EFFC;
+  color: #fff;
   display: inline-block;
   font-size: 1em;
   font-weight: 500;
 }
 
-.sectionCompletedContainer{
+.sectionCompletedContainer {
   width: 15vw;
-  padding: 1.5em;
+  padding: 0.75em;
   display: inline-block;
-  background-color: #3A3A3A;
+  background-color: #3a3a3a;
   position: fixed;
-  bottom: 0;
-  left:0;
+  top: 0;
+  right: 0;
+  z-index: 999;
 }
 
 .MathJax {
   font-size: 2.5em;
 }
 
-.feedbackBox  {
+.feedbackBox {
   display: inline-block;
   z-index: 1000;
   position: fixed;
   right: 2vw;
   top: 5vh;
-  background-color: #FFDD00;
+  background-color: #ffdd00;
   font-size: 0.9em;
   font-weight: 900;
   padding: 0.6em;
-  box-shadow: 0px 10px 35px 0px rgba(0,0,0,0.35);
+  box-shadow: 0px 10px 35px 0px rgba(0, 0, 0, 0.35);
   cursor: pointer;
   height: auto;
   width: 9vw;
   border-radius: 4px;
-  color: #3A3A3A;
+  color: #3a3a3a;
 }
 
 .feedbackBox:hover {
-  box-shadow: 0px 30px 35px 0px rgba(0,0,0,0.35);
-  background-color: #3A3A3A;
-  color:  #FFDD00;
+  box-shadow: 0px 30px 35px 0px rgba(0, 0, 0, 0.35);
+  background-color: #3a3a3a;
+  color: #ffdd00;
+}
 
+.sideBarContainer {
+  background: #333;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 15vw;
+  height: 100vh;
 }
 
 .active {
-  background-color: #9D9D9D;
+  background-color: #9d9d9d;
+}
+
+.bodyWrapper {
+  margin-left: 15vw;
+}
+
+.sectionCardBoxContainer {
+  /* background-color: #3a3a3a; */
+  border-radius: 4px;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  position: relative;
+  padding-left: 5vw;
+  padding-right: 5vw;
+  top: 5vh;
+  width: 100%;
+  height: auto;
+}
+
+.sectionCard {
+  border-radius: 4px;
+  padding: 2em;
+  background-color: #fff;
+  text-align: center;
+  box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.15);
+  width: 19%;
+  cursor: pointer;
+  min-height: 35vh;
+}
+
+.sectionCard:hover {
+  border-radius: 4px;
+  padding: 2em;
+  background-color: #fff;
+  text-align: center;
+  box-shadow: 0px 10px 20px 0px rgba(0,0,0,0.15);
+  width: 19%;
+}
+
+.videoContainer {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  padding-left: 5vw;
+  padding-right: 5vw;
+  top: 7.5vh;
+  /* background-color: #3a3a3a; */
+  position: relative;
+}
+
+.videoBox {
+  box-shadow: 0px 10px 35px 0px rgba(0, 0, 0, 0.35);
+  text-align: center;
+  border-radius: 4px;
+}
+
+.quizInputBox {
+  border-radius: 4px;
+  height: 3em;
+  width: 10em;
+  margin-right: 0.5em;
+}
+
+.quizCheckButton {
+  background-color: #006eaf;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  width: 10em;
+  padding: 1em;
+  cursor: pointer;
+}
+
+.quizCheckButton:hover {
+  box-shadow: 0px 0px 25px 10px rgba(0, 0, 0, 0.15);
+}
+
+.tableImage {
+  max-width: 40%;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.manometer {
+  max-width: 55%;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.canvasCheckboxContainer {
+  display: flex;
+  flex-flow: row;
+  padding-right: 5vw;
+}
+
+.canvasButtonContainer {
+  display: flex;
+  flex-flow: column;
+}
+
+/**this checkbox is in the Drag Balance Page*/
+.checkBoxContainer {
+  position: relative;
+  padding-left: 5vw;
+  padding-top: 10vh;
+  width: 30vw
+}
+
+.buttonForSectionCards {
+  border-radius: 4px;
+  background-color: #006eaf;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1em;
+  padding: 0.75em;
+  width: 100%;
+  position: relative;
+  margin-bottom: 0.75em;
+  cursor: pointer;
+  border: none;
+}
+
+.completeSectionButton {
+  background-color: #006eaf;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 0.8em;
+  position: absolute;
+  font-weight: 900;
+  cursor: pointer;
+  width: 70%;
+  left: 15%;
+  font-size: 1.2em;
+}
+
+.completeSectionButton:hover {
+  box-shadow: 0px 0px 25px 10px rgba(0, 0, 0, 0.15);
+}
+
+/**Styles for smartphone*/
+@media (max-width: 850px) {
+  /**order by page**/
+  .headerText{
+      font-size: 2.5em;
+      position: relative;
+      top: 3vh;
+      font-weight: 900;
+      color: #D4EFFC;
+      display: inline-block;
+    }
+  
+
+  .sideBarContainer {
+    display: none;
+  }
+
+  .bodyWrapper {
+    margin-left: 0vw;
+    width: 100%;
+  }
+
+  /**Home*/
+
+  /*Motivation*/
+  .videoContainer {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    top: 7.5vh;
+    position: relative;
+    width: 100%;
+  }
+
+  .videoBox {
+    box-shadow: none;
+    text-align: center;
+    border-radius: 4px;
+    margin-bottom: 2.5vh;
+  }
+
+  /**Theory*/
+  .tableImage {
+    max-width: 90%;
+  }
+
+  /**Lab*/
+  .manometer {
+    max-width: 100%;
+    padding-right: 5vw;
+  }
+
+  /**Canvas*/
+
+}
+
+/**for larger screens than smartphone*/
+@media (max-width: 950px) {
+  .canvasCheckboxContainer {
+    display: flex;
+    flex-flow: column;
+    padding-right: 5vw;
+  }
+
+  .checkBoxContainer {
+    position: relative;
+    padding-left: 5vw;
+    padding-top: 10vh;
+    width: 100%
+  }
+
+  .sectionCardBoxContainer {
+    border-radius: 4px;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    position: relative;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    top: 5vh;
+    width: 100%;
+    height: auto;
+  }
+
+  .sectionCard {
+    border-radius: 4px;
+    padding: 2em;
+    background-color: #fff;
+    text-align: center;
+    box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.15);
+    width: 100%;
+    min-height: 15vh;
+    margin-top: 1.5vh;
+  }
+
+  .sectionCard:hover {
+    border-radius: 4px;
+    padding: 2em;
+    background-color: #fff;
+    text-align: center;
+    box-shadow: 0px 10px 20px 0px rgba(0,0,0,0.15);
+    width: 100%;
+  }
+
+
+  
 }

@@ -14,11 +14,3 @@ export default function ImageLabSafety(props) {
             />
     )
 }
-
-const container = {
-    position: "relative",
-    marginLeft: "20vw",
-    top: "19.5vh",
-    height: "50vh",
-    marginBottom: "30vh",   
-}

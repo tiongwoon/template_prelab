@@ -76,7 +76,7 @@ export default function Sidebar(props) {
     }
 
     return (
-        <div style={sidebarStyle}>
+        <div className="sideBarContainer">
             <img src={require("../assets/logo_white.png")} alt="logo" style={logoStyle} />
             <nav>
                 <ul>
@@ -96,27 +96,6 @@ export default function Sidebar(props) {
         </div>
     )
 
-
-}
-
-const sidebarStyle = {
-    background: "#333",
-    position: "fixed",
-    top: "0",
-    left: "0",
-    width: "15vw",
-    height: "100vh"
-}
-
-const navStyle = {
-    display: "block",
-    fontSize: "1em",
-    padding: "2em",
-    paddingBottom: "3em",
-    width: "auto",
-    height: "4em",
-    color: "white",
-    textDecoration: "none",
 
 }
 

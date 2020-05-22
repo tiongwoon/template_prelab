@@ -210,12 +210,9 @@ export default function LabQuiz() {
             <div className="secondaryHeaderContainer">
                 <div className="secondaryHeader">Quiz</div>
                 <p className="textAreaFloating">Answer the following questions based on this image.</p>
-                <div>
-
-
-                </div>
+                <img className="manometer" src={require("../../assets/manometer.jpg")} />
             </div>
-            <img style={manometerStyle} src={require("../../assets/manometer.jpg")} />
+            
 
             <div className="quizContainer">
                 <div className="quizQuestion">
@@ -225,9 +222,9 @@ export default function LabQuiz() {
                             name="answer"
                             type="string"
                             onChange={changeHandlerOne}
-                            style={inputBoxStyle}
+                            className="quizInputBox"
                         />
-                        <input type="submit" value="Check Answer" style={checkButtonStyle} /> <br></br>
+                        <input type="submit" value="Check Answer" className="quizCheckButton" /> <br></br>
                     </form>
 
                     {answerOne ? Answer(1) : null}
@@ -240,9 +237,9 @@ export default function LabQuiz() {
                             name="answer"
                             type="string"
                             onChange={changeHandlerTwo}
-                            style={inputBoxStyle}
+                            className="quizInputBox"
                         />
-                        <input type="submit" value="Check Answer" style={checkButtonStyle} /> <br></br>
+                        <input type="submit" value="Check Answer" className="quizCheckButton" /> <br></br>
                     </form>
                     {answerTwo ? Answer(2) : null}
                 </div>
@@ -254,9 +251,9 @@ export default function LabQuiz() {
                             name="answer"
                             type="string"
                             onChange={changeHandlerThree}
-                            style={inputBoxStyle}
+                            className="quizInputBox"
                         />
-                        <input type="submit" value="Check Answer" style={checkButtonStyle} /> <br></br>
+                        <input type="submit" value="Check Answer" className="quizCheckButton" /> <br></br>
                     </form>
                     {answerThree ? Answer(3) : null}
                 </div>
@@ -268,9 +265,9 @@ export default function LabQuiz() {
                             name="answer"
                             type="string"
                             onChange={changeHandlerFour}
-                            style={inputBoxStyle}
+                            className="quizInputBox"
                         />
-                        <input type="submit" value="Check Answer" style={checkButtonStyle} /> <br></br>
+                        <input type="submit" value="Check Answer" className="quizCheckButton" /> <br></br>
                     </form>
                     {answerFour ? Answer(4) : null}
                 </div>
@@ -282,41 +279,15 @@ export default function LabQuiz() {
                             name="answer"
                             type="string"
                             onChange={changeHandlerFive}
-                            style={inputBoxStyle}
+                            className="quizInputBox"
                         />
-                        <input type="submit" value="Check Answer" style={checkButtonStyle} /> <br></br>
+                        <input type="submit" value="Check Answer" className="quizCheckButton" /> <br></br>
                     </form>
                     {answerFive ? Answer(5) : null}
                 </div>
             </div>
         </div>
     )
-}
-
-const checkButtonStyle = {
-    backgroundColor: "#006EAF",
-    color: "#FFFFFF",
-    border: "none",
-    borderRadius: "4px",
-    padding: "1em",
-    margin: "1em",
-    boxShadow: "0px 0px 10px 0px rgba(0,0,0,0.15)",
-    cursor: "pointer",
-}
-
-const inputBoxStyle = {
-    borderRadius: "4px",
-    height: "3em",
-    width: "20em",
-}
-
-const manometerStyle = {
-    maxWidth: "40%",
-    height: "auto",
-    position: "relative",
-    //left: "30vw",
-    top: "52vh",
-    left: "20vw"
 }
 
 const showSolutionButtonStyle = {
@@ -330,6 +301,6 @@ const showSolutionButtonStyle = {
 const display = {
     display: "inline-block",
     position: "relative",
-    top: "45vh",
-    marginTop: "10vh"
+    top: "0vh",
+    marginTop: "0vh"
 }
