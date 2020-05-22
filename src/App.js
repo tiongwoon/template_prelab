@@ -9,7 +9,6 @@ import { theme, ThemeProvider, CSSReset } from "@chakra-ui/core";
 import Lab from "./components/Lab";
 import Canvas from "./components/elements/Canvas";
 import Feedback from "./components/Feedback";
-import { GlobalProvider } from "../src/context/GlobalState";
 
 const customTheme = {
   ...theme,
@@ -39,7 +38,6 @@ function App() {
   return (
     <div className="App">
       <ThemeProvider>
-      <GlobalProvider>
         <Router>
 
             <Home counter={counter} path="/" />
@@ -70,7 +68,6 @@ function App() {
             />
 
         </Router>
-        </GlobalProvider>
         <Feedback />
       </ThemeProvider>
     </div>
