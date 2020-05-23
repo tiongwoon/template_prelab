@@ -68,7 +68,7 @@ function App() {
             />
 
         </Router>
-        <Feedback />
+        {/* <Feedback /> */}
       </ThemeProvider>
     </div>
   );

@@ -303,8 +303,65 @@ a:link {
   box-shadow: 0px 0px 25px 10px rgba(0, 0, 0, 0.15);
 }
 
+.dropdownContainer {
+  display: none 
+}
+
+.dropdownContainer .dropdownMenuIcon {
+  display: none;
+}
+
 /**Styles for smartphone*/
-@media (max-width: 850px) {
+@media (max-width: 970px) {
+  /**for the menu*/
+  .dropdownContainer {
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    top: 3vh;
+    padding: 1em;
+  }
+
+  .dropdownContainer a{
+    display: none;
+  }
+
+  .dropdownContainer center{
+    display: none;
+  }
+
+  .dropdownContainer .dropdownMenuIcon {
+    float: right;
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 1em;
+    cursor: pointer;
+    color: #D4EFFC;
+    background-color: #003B73;
+  }
+
+  .dropdownContainer.responsive {
+    background-color: #3a3a3a;
+  }
+
+  .dropdownContainer.responsive a{
+    float: none;
+    display: block;
+    text-align: center;
+    width: 100vw;
+  }
+
+  .dropdownContainer.responsive center{
+    float: none;
+    display: block;
+    text-align: center;
+    width: 100vw;
+    height: 15vh;
+  }
+
+
   /**order by page**/
   .headerText{
       font-size: 2.5em;
@@ -358,11 +415,14 @@ a:link {
   }
 
   /**Canvas*/
-
+  .checkBoxContainer {
+    top: 7.5vh;
+    padding-top: 0vh;
+  }
 }
 
-/**for larger screens than smartphone*/
-@media (max-width: 950px) {
+/**same as above*/
+@media (max-width: 970px) {
   .canvasCheckboxContainer {
     display: flex;
     flex-flow: column;
@@ -405,7 +465,7 @@ a:link {
     padding: 2em;
     background-color: #fff;
     text-align: center;
-    box-shadow: 0px 10px 20px 0px rgba(0,0,0,0.15);
+    box-shadow: 0px 10px 20px 0px rgba(0,0,0,0.35);
     width: 100%;
   }
 

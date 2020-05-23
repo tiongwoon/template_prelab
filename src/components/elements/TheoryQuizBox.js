@@ -228,7 +228,7 @@ export default function TheoryQuizBox() {
         <br></br>
         <p className="textAreaFloating">
           1. In this lab, we will be using mass and momentum conservation to
-          derive drag force. You can refer to the content in page XX in ME1
+          derive drag force. You can refer to the content starting from page 69 in the ME1
           notes to refresh your understanding. Please revisit the 'Submarine
           Question', which is replicated in your previous and current tutorial
           sheets as below:
@@ -236,9 +236,25 @@ export default function TheoryQuizBox() {
           <br></br>
           &emsp; a. ME1 Fluid Mechanics 1 Tutorial Sheet 9 Question 2 (Please
           note the difference in frame of reference will result in different
-          representation of wake velocity profile. ie. Fixed frame, u is maximum
-          at the axis and zero at r=R, Moving frame with the submarine, u is
-          zero at the axis and maximum at r=R.)
+          representation of wake velocity profile. ie. Fixed frame, {" "}
+          <MathJax.Context input="tex">
+            <MathJax.Node inline>u</MathJax.Node>
+          </MathJax.Context>
+          {" "}is maximum
+          at the axis and zero at {" "}
+          <MathJax.Context input="tex">
+            <MathJax.Node inline>r=R</MathJax.Node>
+          </MathJax.Context>. 
+          {" "}Moving frame with the submarine, {" "}
+          <MathJax.Context input="tex">
+            <MathJax.Node inline>u</MathJax.Node>
+          </MathJax.Context> 
+          {" "}is
+          zero at the axis and maximum at{" "} 
+          <MathJax.Context input="tex">
+            <MathJax.Node inline>r=R</MathJax.Node>
+          </MathJax.Context>
+          {" "}.)
           <br></br>
           <br></br>
           &emsp; b. ME2 Fluid Mechanics 2 Tutorial Sheet 1 Question 3.
@@ -249,18 +265,7 @@ export default function TheoryQuizBox() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Button
-              border="none"
-              bg="#006EAF"
-              color="#FFFFFF"
-              _hover={{
-                boxShadow: "0px 0px 25px 0px rgba(0,0,0,0.25)",
-                bg: "#006EAF",
-                cursor: "pointer",
-              }}
-            >
-              Go to Blackboard
-            </Button>
+            <button className="quizCheckButton">Go To Blackboard</button>
           </a>
           <br></br>
           <br></br>
@@ -276,7 +281,8 @@ export default function TheoryQuizBox() {
           <form onSubmit={submitHandlerOne}>
             <input
               name="answer"
-              type="string"
+              type="number"
+              step="0.0001"
               onChange={changeHandlerOne}
               className="quizInputBox"
             />
@@ -310,7 +316,8 @@ export default function TheoryQuizBox() {
           <form onSubmit={submitHandlerTwo}>
             <input
               name="answer"
-              type="string"
+              type="number"
+              step="0.0001"
               onChange={changeHandlerTwo}
               className="quizInputBox"
             />
