@@ -4,11 +4,11 @@ import { Router } from "@reach/router";
 import Motivation from "./components/Motivation";
 import Theory from "./components/Theory";
 import Safety from "./components/Safety";
-import Home from "./components/layout/Home";
+import Home from "./components/Home";
 import {  ThemeProvider } from "@chakra-ui/core";
 import Lab from "./components/Lab";
-import Canvas from "./components/elements/Canvas";
-//import Feedback from "./components/Feedback";
+import Canvas from "./components/Canvas";
+import Feedback from "./components/elements/Feedback";
 
 // const customTheme = {
 //   ...theme,
@@ -65,7 +65,7 @@ function App() {
             progress={() => handleProgressClick()}
           />
         </Router>
-        {/* <Feedback /> */}
+         <Feedback />
       </ThemeProvider>
     </div>
   );

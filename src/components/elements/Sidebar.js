@@ -57,8 +57,8 @@ export default function Sidebar(props) {
     <div>
       <div className="sideBarContainer">
         <img
-          src={require("../assets/logo_white.png")}
-          alt="logo"
+          src={require("../../assets/logo_white.png")}
+          alt="logo of Imperial College London"
           style={logoStyle}
         />
         <nav role="navigation">
@@ -67,7 +67,7 @@ export default function Sidebar(props) {
               <li className={className(1)}>
                 <img
                   style={{ inlineSize: "1.6em", paddingRight: "0.8em" }}
-                  src={require("../assets/home-run.svg")}
+                  src={require("../../assets/home-run.svg")}
                   alt=""
                   aria-hidden="true"
                 />
@@ -78,7 +78,7 @@ export default function Sidebar(props) {
               <li className={className(2)}>
                 <img
                   style={{ inlineSize: "1.6em", paddingRight: "0.8em" }}
-                  src={require("../assets/youtube.svg")}
+                  src={require("../../assets/youtube.svg")}
                   alt=""
                   aria-hidden="true"
                 />
@@ -89,7 +89,7 @@ export default function Sidebar(props) {
               <li className={className(3)}>
                 <img
                   style={{ inlineSize: "1.6em", paddingRight: "0.8em" }}
-                  src={require("../assets/book.svg")}
+                  src={require("../../assets/book.svg")}
                   alt=""
                   aria-hidden="true"
                 />
@@ -100,7 +100,7 @@ export default function Sidebar(props) {
               <li className={className(4)}>
                 <img
                   style={{ inlineSize: "1.6em", paddingRight: "0.8em" }}
-                  src={require("../assets/lab.svg")}
+                  src={require("../../assets/lab.svg")}
                   alt=""
                   aria-hidden="true"
                 />
@@ -111,7 +111,7 @@ export default function Sidebar(props) {
               <li className={className(5)}>
                 <img
                   style={{ inlineSize: "1.6em", paddingRight: "0.8em" }}
-                  src={require("../assets/libra.svg")}
+                  src={require("../../assets/libra.svg")}
                   alt=""
                   aria-hidden="true"
                 />
@@ -122,7 +122,7 @@ export default function Sidebar(props) {
               <li className={className(6)}>
                 <img
                   style={{ inlineSize: "1.6em", paddingRight: "0.8em" }}
-                  src={require("../assets/warning.svg")}
+                  src={require("../../assets/warning.svg")}
                   alt=""
                   aria-hidden="true"
                 />
@@ -154,7 +154,7 @@ export default function Sidebar(props) {
         <a href="/" className={className(1)}>
           <img
             style={{ inlineSize: "1.6em", paddingRight: "0.8em" }}
-            src={require("../assets/home-run.svg")}
+            src={require("../../assets/home-run.svg")}
             alt=""
           />
           Home
@@ -162,7 +162,7 @@ export default function Sidebar(props) {
         <a href="/motivation" className={className(2)}>
           <img
             style={{ inlineSize: "1.6em", paddingRight: "0.8em" }}
-            src={require("../assets/youtube.svg")} 
+            src={require("../../assets/youtube.svg")} 
             alt=""
           />
           Motivation
@@ -170,7 +170,7 @@ export default function Sidebar(props) {
         <a href="/theory" className={className(3)}>
           <img
             style={{ inlineSize: "1.6em", paddingRight: "0.8em" }}
-            src={require("../assets/book.svg")}
+            src={require("../../assets/book.svg")}
             alt=""
           />
           Theory
@@ -178,7 +178,7 @@ export default function Sidebar(props) {
         <a href="/lab" className={className(4)}>
           <img
             style={{ inlineSize: "1.6em", paddingRight: "0.8em" }}
-            src={require("../assets/lab.svg")}
+            src={require("../../assets/lab.svg")}
             alt=""
           />
           The Lab
@@ -186,7 +186,7 @@ export default function Sidebar(props) {
         <a href="/dragbalance" className={className(5)}>
           <img
             style={{ inlineSize: "1.6em", paddingRight: "0.8em" }}
-            src={require("../assets/libra.svg")}
+            src={require("../../assets/libra.svg")}
             alt=""
           />
           Drag Balance
@@ -194,7 +194,7 @@ export default function Sidebar(props) {
         <a href="/safety" className={className(6)}>
           <img
             style={{ inlineSize: "1.6em", paddingRight: "0.8em" }}
-            src={require("../assets/warning.svg")}
+            src={require("../../assets/warning.svg")}
             alt=""
           />
           Safety

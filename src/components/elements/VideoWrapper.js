@@ -2,7 +2,7 @@ import React from "react";
 
 export default function VideoWrapper() {
   return (
-    <div className="videoContainer">
+    <section className="videoContainer">
       <div className="videoBox">
         <iframe
           title="This video about the interaction of
@@ -39,6 +39,6 @@ export default function VideoWrapper() {
           allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen"
         ></iframe>
       </div>
-    </div>
+    </section>
   );
 }

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import TheoryQuizBox from "./elements/TheoryQuizBox";
 import ProgressButton from "./elements/ProgressButton";
 import Header from "./elements/Header";
-import Sidebar from "./Sidebar";
+import Sidebar from "./elements/Sidebar";
 
 export default function Theory(props) {
   const [completeTheorySection, setcompleteTheorySection] = useState(

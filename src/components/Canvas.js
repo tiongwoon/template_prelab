@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Checkbox, Stack, Button, Collapse } from "@chakra-ui/core";
-import Header from "./Header";
-import Sidebar from "../Sidebar";
+import Header from "./elements/Header";
+import Sidebar from "./elements/Sidebar";
 import MathJax from "react-mathjax2";
-import ProgressButton from "./ProgressButton";
+import ProgressButton from "./elements/ProgressButton";
 import * as math from "mathjs";
 
 export default function Canvas(props) {

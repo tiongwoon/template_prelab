@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import VideoWrapper from "./elements/VideoWrapper";
 import ProgressButton from "./elements/ProgressButton";
 import Header from "./elements/Header";
-import Sidebar from "./Sidebar";
+import Sidebar from "./elements/Sidebar";
 
 export default function Motivation(props) {
   const [completeMotivationSection, setcompleteMotivationSection] = useState(
@@ -24,7 +24,7 @@ export default function Motivation(props) {
     <>
       <main className="bodyWrapper">
         <Header name="Motivation" />
-        <div className="textArea">
+        <section className="textArea">
           <p>
             The lab aims to provide students the opportunity to experiment with
             flow over object, with a focus on drag.
@@ -58,7 +58,7 @@ export default function Motivation(props) {
           </ol>
           <br></br>
           <center style={{ fontWeight: "900" }}>Choose one to watch.</center>
-        </div>
+        </section>
         <VideoWrapper />
 
         {completeMotivationSection === "notdone" ? (

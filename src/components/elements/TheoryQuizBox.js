@@ -200,15 +200,15 @@ export default function TheoryQuizBox() {
   const dragCoefficient = `{C_\\mathrm{D}}`;
 
   return (
-    <div>
-      <div className="textArea">
-        In this section, we will explore some theories required for you to
-        understand the lab. Below are 2 questions to help you strengthen your
-        conceptual understanding.
-      </div>
+    <section>
+      <article className="textArea">
+        To prepare for the lab, it is important that you remember the content in
+        the Conservation of Momentum chapter. Below are 3 questions to help you
+        refresh and strengthen your conceptual understanding.
+      </article>
 
-      <div style={containerForQuizHeader}>
-        <div className="secondaryHeader">Exercises</div>
+      <article style={containerForQuizHeader}>
+        <h1 className="secondaryHeader">Exercises</h1>
 
         <br></br>
         <ol className="textAreaFloating">
@@ -280,7 +280,7 @@ export default function TheoryQuizBox() {
             />
             <br></br>
             <form onSubmit={submitHandlerOne}>
-              <label style={{ display: "block" }}>
+              <label style={{ display: "block", paddingTop: "1em" }}>
                 Estimate the drag force on the object assuming atmospheric
                 pressure everywhere.
               </label>
@@ -302,8 +302,11 @@ export default function TheoryQuizBox() {
               <br></br>
             </form>
             <Button
-              variantColor="#3A3A3A"
-              variant="outline"
+              variantColor="black"
+              backgroundColor="#fff"
+              cursor="pointer"
+              border="none"
+              variant="link"
               onClick={handleToggleHint}
             >
               Hint
@@ -343,8 +346,8 @@ export default function TheoryQuizBox() {
             {answerTwo ? Answer(2) : null}
           </li>
         </ol>
-      </div>
-    </div>
+      </article>
+    </section>
   );
 }
 

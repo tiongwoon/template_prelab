@@ -1,7 +1,7 @@
 import React from "react";
-import SectionCards from "../SectionCards";
-import Header from "../elements/Header";
-import Sidebar from "../Sidebar";
+import SectionCards from "./elements/SectionCards";
+import Header from "./elements/Header";
+import Sidebar from "./elements/Sidebar";
 import MathJax from "react-mathjax2";
 
 export default function Home(props) {
@@ -17,15 +17,22 @@ export default function Home(props) {
         <Header name="Home" />
 
         <div style={introContainer}>
-          <div className="secondaryHeader">Welcome!</div>
+          <div className="secondaryHeader">ME2 Fluid Mechanics - Drag Lab Preparation</div>
           <p className="textAreaFloating">
-            This website will onboard you in preparation of the Fluid Mechanics
-            Drag Lab.
-            <br></br>
-            You can keep track of your progress with this progress bar. Make
-            sure to click 'Complete Section' at the top right corner after each
-            section. Scroll down to the bottom of the page to view your tasks
-            for the lab.
+            This website will help you prepare adequately for the Fluid Mechanics Drag Lab.
+            You can keep track of your progress with the progress bar at the
+            navigation column on the left of the page. Make sure to click the
+            'Complete and Proceed' button at the bottom of every page to save
+            your progress and be directed to the next section. You can either
+            follow the chronological order from top to bottom of the sections in
+            the navigation bar on the left or you can direct your own learning
+            and choose which section you want to explore. 
+            <p>The lab preparation
+            material is broken down to 5 distinct sections as below, with each
+            providing key ideas to familiarise yourself with before attending
+            the lab session. Finally, information on your tasks in the lab and
+            the next steps after the lab are detailed as below.
+            </p>
           </p>
         </div>
         <SectionCards />
@@ -53,14 +60,16 @@ export default function Home(props) {
             coefficient.
           </div>
           <div style={taskStyle}>
-          <span style={{ fontWeight: "900", fontSize: "1.5em" }}>
-             Next Steps
+            <span style={{ fontWeight: "900", fontSize: "1.5em" }}>
+              Next Steps
             </span>
             <br></br>
             <br></br>
-            <p>After your drag measurements in this lab session, you are required
-            to process the data through the following steps. This section also
-            marks the end of this lab preparation website.</p>
+            <p>
+              After your drag measurements in this lab session, you are required
+              to process the data through the following steps. This section also
+              marks the end of this lab preparation website.
+            </p>
             <br></br>
             Your resuts of the drag force,{" "}
             <MathJax.Context input="tex">
@@ -91,33 +100,38 @@ export default function Home(props) {
             is the fluid dynamic viscosity.<br></br>
             <br></br>
             <span style={{ fontWeight: "700", fontSize: "1.2em" }}>
-             You will need to complete the following tasks before the Boundary Layer lab. 
+              You will need to complete the following tasks before the Boundary
+              Layer lab.
             </span>
             <br></br>
             <ol>
               <li>
                 Reduce the above equation to a simpler relationship between
                 dimensionless groups of the parameters
-              </li><br></br>
+              </li>
+              <br></br>
               <li>
                 Collect all the drag measurements on a circular disc from your
                 first lab session(you should have at least 4 data points). Plot
                 the data on a graph, using the dimensionles parameters you have
                 identified. You can either plot by hand in your lab book or use
                 a computer and stick your printed graph into your book.{" "}
-              </li><br></br>
+              </li>
+              <br></br>
               <li>
                 On the same graph, using a different symbol, plot the drag
                 measurement that you made on your customised shape. Further,
                 find at least one measurement of another shape of your
                 choice-from a source of your choice-and plot it on the graph
                 with a third type of symbol.
-              </li><br></br>
+              </li>
+              <br></br>
               <li>
                 Plot the velocity profile that you measured in the previous lab
                 session, using dimensionles velocity and position where L is a
                 length scale of your choice, consistent with the equation above.
-              </li><br></br>
+              </li>
+              <br></br>
               <li>
                 Estimate the drag on the ircular disc (70 mm diameter, 30 Hz fan
                 speed) using only velocity measurement (upstream and in the
@@ -126,7 +140,8 @@ export default function Home(props) {
                 dimensionless form and compare it to the average drag
                 measurement using the balance. Present your results in a table
                 and work out the difference (%) between them.
-              </li><br></br>
+              </li>
+              <br></br>
             </ol>
             <br></br>
           </div>
@@ -155,11 +170,11 @@ const taskStyle = {
   borderRadius: "4px",
   padding: "2em",
   marginTop: "1.5vh",
-  boxShadow: "0px 5px 10px 0px rgba(0,0,0,0.15)"
+  boxShadow: "0px 5px 10px 0px rgba(0,0,0,0.15)",
 };
 
 const taskContainer = {
-//   background: "#3A3A3A",
+  //   background: "#3A3A3A",
   borderRadius: "4px",
   position: "relative",
   marginTop: "3vh",

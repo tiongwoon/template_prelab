@@ -235,7 +235,7 @@ export default function LabQuiz() {
   const speedUnits = `{ms^{-1}~~}`;
 
   return (
-    <div style={display}>
+    <section style={display}>
       <div className="secondaryHeaderContainer">
         <div className="secondaryHeader">Quiz</div>
         <p className="textAreaFloating">
@@ -379,7 +379,7 @@ export default function LabQuiz() {
           {answerFive ? Answer(5) : null}
         </li>
       </ol>
-    </div>
+    </section>
   );
 }
 

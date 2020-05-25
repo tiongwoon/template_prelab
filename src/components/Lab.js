@@ -14,7 +14,7 @@ import ImageLab from "./elements/ImageLab";
 import LabQuiz from "./elements/LabQuiz";
 import Header from "./elements/Header";
 import ProgressButton from "./elements/ProgressButton";
-import Sidebar from "./Sidebar";
+import Sidebar from "./elements/Sidebar";
 import Slider from "react-slick";
 
 export default function Lab(props) {
@@ -95,7 +95,7 @@ export default function Lab(props) {
     <>
       <main className="bodyWrapper">
         <Header name="Lab Equipments" />
-        <center className="textArea">
+        <section className="textArea">
           In the lab, there are a few equipments which you will need to
           familarise its working principle in order to fully benefit from the
           lab session.
@@ -108,7 +108,7 @@ export default function Lab(props) {
             a smartphone, you will need to scroll laterally to see the full
             image.
           </span>{" "}
-        </center>
+        </section>
 
         <Slider
           {...settings}
