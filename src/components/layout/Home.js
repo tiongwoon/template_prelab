@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import SectionCards from "../SectionCards";
-import ProgressBar from "../elements/ProgressBar";
 import Header from "../elements/Header";
 import Sidebar from "../Sidebar";
 import MathJax from "react-mathjax2";
@@ -14,7 +13,7 @@ export default function Home(props) {
 
   return (
     <>
-      <div className="bodyWrapper">
+      <main className="bodyWrapper">
         <Header name="Home" />
 
         <div style={introContainer}>
@@ -59,10 +58,9 @@ export default function Home(props) {
             </span>
             <br></br>
             <br></br>
-            After your drag measurements in this lab session, you are required
+            <p>After your drag measurements in this lab session, you are required
             to process the data through the following steps. This section also
-            marks the end of this lab preparation website.
-            <br></br>
+            marks the end of this lab preparation website.</p>
             <br></br>
             Your resuts of the drag force,{" "}
             <MathJax.Context input="tex">
@@ -133,7 +131,7 @@ export default function Home(props) {
             <br></br>
           </div>
         </div>
-      </div>
+      </main>
       <Sidebar counter={props.counter} name="Home" />
     </>
   );

@@ -80,20 +80,6 @@ export default function ProgressButton(props) {
   );
 }
 
-const buttonStyle = {
-  backgroundColor: "#006EAF",
-  color: "#FFFFFF",
-  border: "none",
-  borderRadius: "4px",
-  padding: "0.8em",
-  position: "absolute",
-  fontWeight: "900",
-  cursor: "pointer",
-  width: "70%",
-  left: "15%",
-  fontSize: "1.2em"
-};
-
 const bottomBar = {
   height: "10vh",
   marginTop: "20vh",

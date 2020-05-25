@@ -244,12 +244,13 @@ export default function LabQuiz() {
         <img
           className="manometer"
           src={require("../../assets/manometer.jpg")}
+          alt="A manometer with a reading of 85mm"
         />
       </div>
 
-      <div className="quizContainer">
-        <div className="quizQuestion">
-          <p>1. What is the reading of the manometer? (Scale in mm)</p>
+      <ol className="quizContainer">
+        <li className="quizQuestion">
+          <p>What is the reading of the manometer? (Scale in mm)</p>
           <form onSubmit={submitHandlerOne}>
             <input
               name="answer"
@@ -258,9 +259,9 @@ export default function LabQuiz() {
               onChange={changeHandlerOne}
               className="quizInputBox"
             />
-                      <MathJax.Context input="tex">
-            <MathJax.Node inline>mm~~</MathJax.Node>
-          </MathJax.Context>
+            <MathJax.Context input="tex">
+              <MathJax.Node inline>mm~~</MathJax.Node>
+            </MathJax.Context>
             <input
               type="submit"
               value="Check Answer"
@@ -270,11 +271,11 @@ export default function LabQuiz() {
           </form>
 
           {answerOne ? Answer(1) : null}
-        </div>
+        </li>
 
-        <div className="quizQuestion">
+        <li className="quizQuestion">
           <p>
-            2. The manometer is sloped and has a scale factor of 0.1, what is
+            The manometer is sloped and has a scale factor of 0.1, what is
             the vertical height? (in mm, to 1 d.p.)
           </p>
           <form onSubmit={submitHandlerTwo}>
@@ -285,9 +286,9 @@ export default function LabQuiz() {
               onChange={changeHandlerTwo}
               className="quizInputBox"
             />
-         <MathJax.Context input="tex">
-            <MathJax.Node inline>mm~~</MathJax.Node>
-          </MathJax.Context>
+            <MathJax.Context input="tex">
+              <MathJax.Node inline>mm~~</MathJax.Node>
+            </MathJax.Context>
             <input
               type="submit"
               value="Check Answer"
@@ -296,11 +297,11 @@ export default function LabQuiz() {
             <br></br>
           </form>
           {answerTwo ? Answer(2) : null}
-        </div>
+        </li>
 
-        <div className="quizQuestion">
+        <li className="quizQuestion">
           <p>
-            3. The manometer contains water (density 1000kg/m3). What is the
+            The manometer contains water (density 1000kg/m3). What is the
             pressure difference it measured? (in Pa, answer to 3 d.p.)
           </p>
           <form onSubmit={submitHandlerThree}>
@@ -311,9 +312,9 @@ export default function LabQuiz() {
               onChange={changeHandlerThree}
               className="quizInputBox"
             />
-                                  <MathJax.Context input="tex">
-            <MathJax.Node inline>Pa~~</MathJax.Node>
-          </MathJax.Context>
+            <MathJax.Context input="tex">
+              <MathJax.Node inline>Pa~~</MathJax.Node>
+            </MathJax.Context>
             <input
               type="submit"
               value="Check Answer"
@@ -322,11 +323,11 @@ export default function LabQuiz() {
             <br></br>
           </form>
           {answerThree ? Answer(3) : null}
-        </div>
+        </li>
 
-        <div className="quizQuestion">
+        <li className="quizQuestion">
           <p>
-            4. Given a temperature of 21°C and under atmospheric pressure of 101
+            Given a temperature of 21°C and under atmospheric pressure of 101
             kPa, estimate the density of air in the wind tunnel to 3 d.p. (in
             S.I. units).
           </p>
@@ -338,9 +339,9 @@ export default function LabQuiz() {
               onChange={changeHandlerFour}
               className="quizInputBox"
             />
-                                  <MathJax.Context input="tex">
-            <MathJax.Node inline>{densityUnits}</MathJax.Node>
-          </MathJax.Context>
+            <MathJax.Context input="tex">
+              <MathJax.Node inline>{densityUnits}</MathJax.Node>
+            </MathJax.Context>
             <input
               type="submit"
               value="Check Answer"
@@ -349,11 +350,11 @@ export default function LabQuiz() {
             <br></br>
           </form>
           {answerFour ? Answer(4) : null}
-        </div>
+        </li>
 
-        <div className="quizQuestion">
+        <li className="quizQuestion">
           <p>
-            5. The manometer is reading the pressure difference from a
+            The manometer is reading the pressure difference from a
             pitot-static tube facing into an air flow. How fast is the air
             flowing? (in S.I. units)
           </p>
@@ -365,9 +366,9 @@ export default function LabQuiz() {
               onChange={changeHandlerFive}
               className="quizInputBox"
             />
-                                              <MathJax.Context input="tex">
-            <MathJax.Node inline>{speedUnits}</MathJax.Node>
-          </MathJax.Context>
+            <MathJax.Context input="tex">
+              <MathJax.Node inline>{speedUnits}</MathJax.Node>
+            </MathJax.Context>
             <input
               type="submit"
               value="Check Answer"
@@ -376,8 +377,8 @@ export default function LabQuiz() {
             <br></br>
           </form>
           {answerFive ? Answer(5) : null}
-        </div>
-      </div>
+        </li>
+      </ol>
     </div>
   );
 }

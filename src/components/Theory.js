@@ -19,7 +19,7 @@ export default function Theory(props) {
 
   return (
     <>
-      <div className="bodyWrapper">
+      <main className="bodyWrapper">
         <Header name="Theory" />
 
         <TheoryQuizBox />
@@ -38,7 +38,7 @@ export default function Theory(props) {
             </div>
           </div>
         )}
-      </div>
+      </main>
       <Sidebar counter={props.counter} name="Theory" />
     </>
   );

@@ -22,7 +22,7 @@ export default function Motivation(props) {
 
   return (
     <>
-      <div className="bodyWrapper">
+      <main className="bodyWrapper">
         <Header name="Motivation" />
         <div className="textArea">
           <p>
@@ -75,7 +75,7 @@ export default function Motivation(props) {
             </div>
           </div>
         )}
-      </div>
+      </main>
       <Sidebar counter={props.counter} name="Motivation" />
     </>
   );

@@ -11,6 +11,7 @@ export default function ImageLabSafety(props) {
                 height={600}
                 onMouseEnter={area => props.enterArea(area)}
                 onMouseLeave={area => props.leaveArea(area)}
+                alt="The lab set up with clickable spots to inform of the precaution needed at that location."
             />
     )
 }

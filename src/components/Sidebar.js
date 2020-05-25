@@ -61,13 +61,15 @@ export default function Sidebar(props) {
           alt="logo"
           style={logoStyle}
         />
-        <nav>
+        <nav role="navigation">
           <ul>
             <a href="/">
               <li className={className(1)}>
                 <img
                   style={{ inlineSize: "1.6em", paddingRight: "0.8em" }}
                   src={require("../assets/home-run.svg")}
+                  alt=""
+                  aria-hidden="true"
                 />
                 Home
               </li>
@@ -77,6 +79,8 @@ export default function Sidebar(props) {
                 <img
                   style={{ inlineSize: "1.6em", paddingRight: "0.8em" }}
                   src={require("../assets/youtube.svg")}
+                  alt=""
+                  aria-hidden="true"
                 />
                 Motivation
               </li>
@@ -86,6 +90,8 @@ export default function Sidebar(props) {
                 <img
                   style={{ inlineSize: "1.6em", paddingRight: "0.8em" }}
                   src={require("../assets/book.svg")}
+                  alt=""
+                  aria-hidden="true"
                 />
                 Theory
               </li>
@@ -95,6 +101,8 @@ export default function Sidebar(props) {
                 <img
                   style={{ inlineSize: "1.6em", paddingRight: "0.8em" }}
                   src={require("../assets/lab.svg")}
+                  alt=""
+                  aria-hidden="true"
                 />
                 The Lab
               </li>
@@ -104,6 +112,8 @@ export default function Sidebar(props) {
                 <img
                   style={{ inlineSize: "1.6em", paddingRight: "0.8em" }}
                   src={require("../assets/libra.svg")}
+                  alt=""
+                  aria-hidden="true"
                 />
                 Drag Balance
               </li>
@@ -113,6 +123,8 @@ export default function Sidebar(props) {
                 <img
                   style={{ inlineSize: "1.6em", paddingRight: "0.8em" }}
                   src={require("../assets/warning.svg")}
+                  alt=""
+                  aria-hidden="true"
                 />
                 Safety
               </li>
@@ -125,6 +137,7 @@ export default function Sidebar(props) {
             thickness={0.1}
             color="teal"
             value={(props.counter / 5) * 100}
+            role="none"
           >
             <CircularProgressLabel color="white" fontSize="17px">
               Your Progress
@@ -134,7 +147,7 @@ export default function Sidebar(props) {
       </div>
 
       {/* The following is for dropdown menu in small screens */}
-      <div className="dropdownContainer" id="smallMenu">
+      <nav role="navigation" className="dropdownContainer" id="smallMenu">
         <button onClick={dropDownTrigger} className="dropdownMenuIcon">
           &#9776;
         </button>
@@ -142,13 +155,15 @@ export default function Sidebar(props) {
           <img
             style={{ inlineSize: "1.6em", paddingRight: "0.8em" }}
             src={require("../assets/home-run.svg")}
+            alt=""
           />
           Home
         </a>
         <a href="/motivation" className={className(2)}>
           <img
             style={{ inlineSize: "1.6em", paddingRight: "0.8em" }}
-            src={require("../assets/youtube.svg")}
+            src={require("../assets/youtube.svg")} 
+            alt=""
           />
           Motivation
         </a>
@@ -156,6 +171,7 @@ export default function Sidebar(props) {
           <img
             style={{ inlineSize: "1.6em", paddingRight: "0.8em" }}
             src={require("../assets/book.svg")}
+            alt=""
           />
           Theory
         </a>
@@ -163,6 +179,7 @@ export default function Sidebar(props) {
           <img
             style={{ inlineSize: "1.6em", paddingRight: "0.8em" }}
             src={require("../assets/lab.svg")}
+            alt=""
           />
           The Lab
         </a>
@@ -170,6 +187,7 @@ export default function Sidebar(props) {
           <img
             style={{ inlineSize: "1.6em", paddingRight: "0.8em" }}
             src={require("../assets/libra.svg")}
+            alt=""
           />
           Drag Balance
         </a>
@@ -177,6 +195,7 @@ export default function Sidebar(props) {
           <img
             style={{ inlineSize: "1.6em", paddingRight: "0.8em" }}
             src={require("../assets/warning.svg")}
+            alt=""
           />
           Safety
         </a>
@@ -186,13 +205,14 @@ export default function Sidebar(props) {
             thickness={0.1}
             color="teal"
             value={(props.counter / 5) * 100}
+            role="none"
           >
             <CircularProgressLabel color="white" fontSize="15px">
               Your Progress
             </CircularProgressLabel>
           </CircularProgress>
         </center>
-      </div>
+      </nav>
     </div>
   );
 }
@@ -205,15 +225,3 @@ const logoStyle = {
   padding: "0.5em",
 };
 
-/*<link  to=''>Motivation</link>
-                <link  to=''>Theory</link>
-                <link  to=''>The Lab</link>
-                <link  to=''>Safety</link>
-
-                <nav>
-                <navStyle>Motivation</navStyle>
-
-            </nav>
-                <div >Theory</div>
-                <div >The Lab</div>
-                <div >Safety</div>*/

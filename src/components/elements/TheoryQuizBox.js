@@ -1,40 +1,25 @@
 import React, { useState } from "react";
 import { Collapse, Button } from "@chakra-ui/core";
 import MathJax from "react-mathjax2";
-import NormalDistribution from "normal-distribution";
+//import NormalDistribution from "normal-distribution";
 import * as math from "mathjs";
 
 export default function TheoryQuizBox() {
-  const maxSpeed = 20;
+  //const maxSpeed = 20;
   //to generate and calculate answer for wake profile
-  const mean = math.randomInt(10, 17);
-  const std = math.randomInt(2, 8);
-  const normDist = new NormalDistribution(mean, std);
-  const v1 = normDist.pdf(mean);
-  const v4 = normDist.pdf(std * 2);
-  const r2 = std / 3 + mean;
-  const r3 = (std / 3) * 2 + mean;
-  const v2 = normDist.pdf(r2);
-  const v3 = normDist.pdf(r3);
-  const V1 = math.round(maxSpeed - maxSpeed * v1);
-  const V4 = math.round(maxSpeed - maxSpeed * v4);
-  const V2 = math.round(maxSpeed - maxSpeed * v2);
-  const V3 = math.round(maxSpeed - maxSpeed * v3);
-
-  console.log(mean);
-  console.log(r2);
-  console.log(r3);
-  console.log(mean + std);
-  //console.log(std);
-  //console.log(maxV);
-  console.log("pdf of mean is" + " " + v1);
-  console.log("pdf of std is" + " " + v4);
-  console.log(V1);
-  console.log(V2);
-  console.log(V3);
-  console.log(V4);
-
-  //need to write out the function to calculate trapz
+  // const mean = math.randomInt(10, 17);
+  // const std = math.randomInt(2, 8);
+  // const normDist = new NormalDistribution(mean, std);
+  // const v1 = normDist.pdf(mean);
+  // const v4 = normDist.pdf(std * 2);
+  // const r2 = std / 3 + mean;
+  // const r3 = (std / 3) * 2 + mean;
+  // const v2 = normDist.pdf(r2);
+  // const v3 = normDist.pdf(r3);
+  // const V1 = math.round(maxSpeed - maxSpeed * v1);
+  // const V4 = math.round(maxSpeed - maxSpeed * v4);
+  // const V2 = math.round(maxSpeed - maxSpeed * v2);
+  // const V3 = math.round(maxSpeed - maxSpeed * v3);
 
   //for the collapse
   const [showOne, setShowOne] = useState(false);
@@ -226,111 +211,138 @@ export default function TheoryQuizBox() {
         <div className="secondaryHeader">Exercises</div>
 
         <br></br>
-        <p className="textAreaFloating">
-          1. In this lab, we will be using mass and momentum conservation to
-          derive drag force. You can refer to the content starting from page 69
-          in the ME1 notes to refresh your understanding. Please revisit the
-          'Submarine Question', which is replicated in your previous and current
-          tutorial sheets as below:
-          <br></br>
-          <br></br>
-          &emsp; a. ME1 Fluid Mechanics 1 Tutorial Sheet 9 Question 2 (Please
-          note the difference in frame of reference will result in different
-          representation of wake velocity profile. ie. Fixed frame,{" "}
-          <MathJax.Context input="tex">
-            <MathJax.Node inline>u</MathJax.Node>
-          </MathJax.Context>{" "}
-          is maximum at the axis and zero at{" "}
-          <MathJax.Context input="tex">
-            <MathJax.Node inline>r=R</MathJax.Node>
-          </MathJax.Context>
-          . Moving frame with the submarine,{" "}
-          <MathJax.Context input="tex">
-            <MathJax.Node inline>u</MathJax.Node>
-          </MathJax.Context>{" "}
-          is zero at the axis and maximum at{" "}
-          <MathJax.Context input="tex">
-            <MathJax.Node inline>r=R</MathJax.Node>
-          </MathJax.Context>{" "}
-          .)
-          <br></br>
-          <br></br>
-          &emsp; b. ME2 Fluid Mechanics 2 Tutorial Sheet 1 Question 3.
-          <br></br>
-          <br></br>
-          <a
-            href="http://bb.imperial.ac.uk"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <button className="quizCheckButton">Go To Blackboard</button>
-          </a>
-          <br></br>
-          <br></br>
-          2. For the example measured wake profile below, estimate the drag on
-          the object assuming atmospheric pressure everywhere.
-          <img
-            style={imageStyle}
-            src={require("../../assets/streamline.jpg")}
-          />
-          <br></br>
-          <img className="tableImage" src={require("../../assets/table.jpg")} />
-          <br></br>
-          <form onSubmit={submitHandlerOne}>
-            <input
-              name="answer"
-              type="number"
-              step="0.0001"
-              onChange={changeHandlerOne}
-              className="quizInputBox"
-            />
-            <MathJax.Context input="tex">
-              <MathJax.Node inline>N ~~</MathJax.Node>
-            </MathJax.Context>
-            <input
-              type="submit"
-              value="Check Answer"
-              className="quizCheckButton"
-            />{" "}
+        <ol className="textAreaFloating">
+          <li>
+            In this lab, we will be using mass and momentum conservation to
+            derive drag force. You can refer to the content starting from page
+            69 in the ME1 notes to refresh your understanding. Please revisit
+            the 'Submarine Question', which is replicated in your previous and
+            current tutorial sheets as below:
             <br></br>
-          </form>
-          <Button
-            variantColor="#3A3A3A"
-            variant="outline"
-            onClick={handleToggleHint}
-          >
-            Hint
-          </Button>
-          <Collapse isOpen={showHint} marginTop="0.7em">
-            This question is similar to question 1. The only difference here is
-            that data is given for the velocity. So, you need to think of a way
-            to find the integral, or in other words, the sum.
-          </Collapse>
-          {answerOne ? Answer(1) : null}
-          <br></br>
-          3. Given that the object has a radius of 28mm, using the drag force
-          calculated from question 2, work out the drag coefficient,{" "}
-          <MathJax.Context input="tex">
-            <MathJax.Node inline>{dragCoefficient}</MathJax.Node>
-          </MathJax.Context>
-          .
-          <form onSubmit={submitHandlerTwo}>
-            <input
-              name="answer"
-              type="number"
-              step="0.0001"
-              onChange={changeHandlerTwo}
-              className="quizInputBox"
-            />
-            <input
-              type="submit"
-              value="Check Answer"
-              className="quizCheckButton"
-            />{" "}
             <br></br>
-          </form>
-          {answerTwo ? Answer(2) : null}
-        </p>
+            <ul>
+              <li>
+                <strong>
+                  ME1 Fluid Mechanics 1 Tutorial Sheet 9 Question 2{" "}
+                </strong>
+                (Please note the difference in frame of reference will result in
+                different representation of wake velocity profile. ie. Fixed
+                frame,{" "}
+                <MathJax.Context input="tex">
+                  <MathJax.Node inline>u</MathJax.Node>
+                </MathJax.Context>{" "}
+                is maximum at the axis and zero at{" "}
+                <MathJax.Context input="tex">
+                  <MathJax.Node inline>r=R</MathJax.Node>
+                </MathJax.Context>
+                . Moving frame with the submarine,{" "}
+                <MathJax.Context input="tex">
+                  <MathJax.Node inline>u</MathJax.Node>
+                </MathJax.Context>{" "}
+                is zero at the axis and maximum at{" "}
+                <MathJax.Context input="tex">
+                  <MathJax.Node inline>r=R</MathJax.Node>
+                </MathJax.Context>{" "}
+                .)
+              </li>
+              <li>
+                <strong>
+                  ME2 Fluid Mechanics 2 Tutorial Sheet 1 Question 3.
+                </strong>
+              </li>
+            </ul>
+            <br></br>
+            <a
+              href="http://bb.imperial.ac.uk"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <button className="quizCheckButton">Go To Blackboard</button>
+            </a>
+            <p>
+              <em>This link will open a new tab.</em>
+            </p>
+            <br></br>
+          </li>
+          <li>
+            For the example measured wake profile below, estimate the drag on
+            the object assuming atmospheric pressure everywhere.
+            <img
+              style={imageStyle}
+              src={require("../../assets/streamline.jpg")}
+              alt="A streamline control volume drawn around an object."
+            />
+            <br></br>
+            <img
+              className="tableImage"
+              src={require("../../assets/table.jpg")}
+              alt="A table with data values for radial distance from axis and its corresponding airflow speed."
+            />
+            <br></br>
+            <form onSubmit={submitHandlerOne}>
+              <label style={{ display: "block" }}>
+                Estimate the drag force on the object assuming atmospheric
+                pressure everywhere.
+              </label>
+              <input
+                name="answer"
+                type="number"
+                step="0.0001"
+                onChange={changeHandlerOne}
+                className="quizInputBox"
+              />
+              <MathJax.Context input="tex">
+                <MathJax.Node inline>N ~~</MathJax.Node>
+              </MathJax.Context>
+              <input
+                type="submit"
+                value="Check Answer"
+                className="quizCheckButton"
+              />{" "}
+              <br></br>
+            </form>
+            <Button
+              variantColor="#3A3A3A"
+              variant="outline"
+              onClick={handleToggleHint}
+            >
+              Hint
+            </Button>
+            <Collapse isOpen={showHint} marginTop="0.7em">
+              This question is similar to question 1. The only difference here
+              is that data is given for the velocity. So, you need to think of a
+              way to find the integral, or in other words, the sum.
+            </Collapse>
+            {answerOne ? Answer(1) : null}
+            <br></br>
+          </li>
+          <li>
+            <form onSubmit={submitHandlerTwo}>
+              <label for="answer" style={{ display: "block" }}>
+                Given that the object has a radius of 28mm, using the drag force
+                calculated from question 2, work out the drag coefficient,{" "}
+                <MathJax.Context input="tex">
+                  <MathJax.Node inline>{dragCoefficient}</MathJax.Node>
+                </MathJax.Context>
+                .
+              </label>
+              <input
+                name="answer"
+                type="number"
+                step="0.0001"
+                onChange={changeHandlerTwo}
+                className="quizInputBox"
+              />
+              <input
+                type="submit"
+                value="Check Answer"
+                className="quizCheckButton"
+              />{" "}
+              <br></br>
+            </form>
+            {answerTwo ? Answer(2) : null}
+          </li>
+        </ol>
       </div>
     </div>
   );

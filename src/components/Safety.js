@@ -45,7 +45,7 @@ export default function Safety(props) {
 
   return (
     <>
-      <div className="bodyWrapper">
+      <main className="bodyWrapper">
         <Header name="Safety" />
         <div className="textArea">
           There are 2 main safety precautions which you need to be wary of
@@ -85,7 +85,7 @@ export default function Safety(props) {
             </div>
           </div>
         )}
-      </div>
+      </main>
       <Sidebar counter={props.counter} name="Safety" />
     </>
   );
@@ -121,6 +121,7 @@ const precautions = {
       <img
         style={{ inlineSize: "1.75em", paddingRight: "0.5em" }}
         src={require("../assets/shout.svg")}
+        alt=""
       />
       <span style={{ fontWeight: "900", fontSize: "1.5em" }}>Noise</span>{" "}
       <br></br>DO NOT stand near the fan for extended period. <br></br>
@@ -131,6 +132,7 @@ const precautions = {
       <img
         style={{ inlineSize: "1.75em", paddingRight: "0.5em" }}
         src={require("../assets/fan.svg")}
+        alt=""
       />
       <span style={{ fontWeight: "900", fontSize: "1.5em" }}>
         High Speed Air

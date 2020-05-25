@@ -232,6 +232,7 @@ a:link {
   width: 10em;
   padding: 1em;
   cursor: pointer;
+  font-weight: bold;
 }
 
 .quizCheckButton:hover {

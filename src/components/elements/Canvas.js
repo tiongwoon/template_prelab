@@ -1,11 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import {
-  Checkbox,
-  CheckboxGroup,
-  Stack,
-  Button,
-  Collapse,
-} from "@chakra-ui/core";
+import { Checkbox, Stack, Button, Collapse } from "@chakra-ui/core";
 import Header from "./Header";
 import Sidebar from "../Sidebar";
 import MathJax from "react-mathjax2";
@@ -525,7 +519,7 @@ export default function Canvas(props) {
 
   function Answer(questionNumber) {
     if (questionNumber === 1) {
-      if (math.round(answerOne) == "6") {
+      if (math.round(answerOne) === 6) {
         return (
           <div>
             <p>Correct!</p>
@@ -563,7 +557,7 @@ export default function Canvas(props) {
       return (
         <div>
           <p>
-            {math.round(answerTwo, 2) == "0.28"
+            {math.round(answerTwo, 2) === 0.28
               ? "Correct"
               : "Wrong, try again."}
           </p>
@@ -583,7 +577,7 @@ export default function Canvas(props) {
       return (
         <div>
           <p>
-            {math.round(answerThree, 3) == "0.059"
+            {math.round(answerThree, 3) === 0.059
               ? "Correct"
               : "Wrong, try again."}
           </p>
@@ -615,14 +609,14 @@ export default function Canvas(props) {
 
   return (
     <>
-      <div className="bodyWrapper">
+      <main className="bodyWrapper">
         <Header name="Drag balance" />
-        <div className="textArea">
+        <section className="textArea">
           Understanding the drag balance is an integral part of the lab. It is
           used to measure the drag force and how it changes with different
           shapes.
-        </div>
-        <div className="canvasCheckboxContainer">
+        </section>
+        <section className="canvasCheckboxContainer">
           <div className="canvasButtonContainer">
             <canvas
               style={canvasPosition}
@@ -631,6 +625,8 @@ export default function Canvas(props) {
               height={325}
             >
               Please update to the latest browser to display graphic element.
+              This is an animation simulating the process you will be doing in
+              the actual lab.
             </canvas>
             {!air ? (
               <Button style={buttonStyle} onClick={onAirFlow}>
@@ -643,7 +639,7 @@ export default function Canvas(props) {
             )}
           </div>
           <div className="checkBoxContainer">
-            <div>
+            <section>
               Try to balance the force by adding weight to the other side of the
               drag balance.
               <br></br>
@@ -652,7 +648,7 @@ export default function Canvas(props) {
                 HEADS UP: Do take note of the initial position of the dial gauge
                 pointer so that you know when it is balanced.{" "}
               </span>
-            </div>
+            </section>
             <div
               style={{
                 display: "flex",
@@ -736,7 +732,7 @@ export default function Canvas(props) {
               </Stack>
             </div>
           </div>
-        </div>
+        </section>
 
         <div style={quizContainerStyle}>
           <div style={addMargin}>
@@ -772,80 +768,86 @@ export default function Canvas(props) {
               </li>
             </ul>
           </div>
-          <div style={addMargin}>
-            1. Can you identify the right amount of mass, in g, to add in order
-            to balance the drag force?
-          </div>
-          <form onSubmit={(event) => submitHandler(event, 1)}>
-            <input
-              name="answer"
-              type="string"
-              onChange={(event) => changeHandler(event, 1)}
-              className="quizInputBox"
-            />
-            <MathJax.Context input="tex">
-              <MathJax.Node inline>g~~</MathJax.Node>
-            </MathJax.Context>
-            <input
-              type="submit"
-              value="Check Answer"
-              className="quizCheckButton"
-            />{" "}
-            <br></br>
-          </form>
-          {answerOne ? Answer(1) : null}
+          <ol>
+            <li>
+              <div style={addMargin}>
+                Can you identify the right amount of mass, in g, to add in
+                order to balance the drag force?
+              </div>
+              <form onSubmit={(event) => submitHandler(event, 1)}>
+                <input
+                  name="answer"
+                  type="string"
+                  onChange={(event) => changeHandler(event, 1)}
+                  className="quizInputBox"
+                />
+                <MathJax.Context input="tex">
+                  <MathJax.Node inline>g~~</MathJax.Node>
+                </MathJax.Context>
+                <input
+                  type="submit"
+                  value="Check Answer"
+                  className="quizCheckButton"
+                />{" "}
+                <br></br>
+              </form>
+              {answerOne ? Answer(1) : null}
+            </li>
 
-          <div style={addMargin}>2. What is the drag force?</div>
-          <form onSubmit={(event) => submitHandler(event, 3)}>
-            <input
-              name="answer"
-              type="string"
-              onChange={(event) => changeHandler(event, 3)}
-              className="quizInputBox"
-            />
-            <MathJax.Context input="tex">
-              <MathJax.Node inline>N~~</MathJax.Node>
-            </MathJax.Context>
-            <input
-              type="submit"
-              value="Check Answer"
-              className="quizCheckButton"
-            />{" "}
-            <br></br>
-          </form>
-          {answerThree ? Answer(3) : null}
+            <li>
+              <div style={addMargin}>What is the drag force?</div>
+              <form onSubmit={(event) => submitHandler(event, 3)}>
+                <input
+                  name="answer"
+                  type="string"
+                  onChange={(event) => changeHandler(event, 3)}
+                  className="quizInputBox"
+                />
+                <MathJax.Context input="tex">
+                  <MathJax.Node inline>N~~</MathJax.Node>
+                </MathJax.Context>
+                <input
+                  type="submit"
+                  value="Check Answer"
+                  className="quizCheckButton"
+                />{" "}
+                <br></br>
+              </form>
+              {answerThree ? Answer(3) : null}
+            </li>
 
-          <div style={addMargin}>
-            3. What is the drag coefficient of the disc? (Compare its value to
-            the one in the Theory section. What could be the reason they are
-            different?)
-          </div>
-          <form onSubmit={(event) => submitHandler(event, 2)}>
-            <input
-              name="answer"
-              type="string"
-              onChange={(event) => changeHandler(event, 2)}
-              className="quizInputBox"
-            />
-            <input
-              type="submit"
-              value="Check Answer"
-              className="quizCheckButton"
-            />{" "}
-            <br></br>
-          </form>
-          {answerTwo ? Answer(2) : null}
+            <li>
+              <div style={addMargin}>
+                What is the drag coefficient of the disc? (Compare its value
+                to the one in the Theory section. What could be the reason they
+                are different?)
+              </div>
+              <form onSubmit={(event) => submitHandler(event, 2)}>
+                <input
+                  name="answer"
+                  type="string"
+                  onChange={(event) => changeHandler(event, 2)}
+                  className="quizInputBox"
+                />
+                <input
+                  type="submit"
+                  value="Check Answer"
+                  className="quizCheckButton"
+                />{" "}
+                <br></br>
+              </form>
+              {answerTwo ? Answer(2) : null}
+            </li>
+          </ol>
         </div>
 
         {completeDragBalanceSection === "notdone" ? (
-          <a href="/safety">
             <ProgressButton
               progress={props.progress}
               counter={props.counter}
               toggle={turnOffDragBalanceButton}
               sectionName="dragbalance"
-            />{" "}
-          </a>
+            />
         ) : (
           <div className="sectionCompletedContainer">
             <div className="sectionCompleted">
@@ -853,7 +855,7 @@ export default function Canvas(props) {
             </div>
           </div>
         )}
-      </div>
+      </main>
       <Sidebar counter={props.counter} name="Drag Balance" />
     </>
   );
@@ -915,23 +917,6 @@ const showSolutionButtonStyle = {
   borderRadius: "4px",
   color: "#003E74",
   cursor: "pointer",
-};
-
-const checkButtonStyle = {
-  backgroundColor: "#006EAF",
-  color: "#FFFFFF",
-  border: "none",
-  borderRadius: "4px",
-  padding: "1em",
-  margin: "1em",
-  boxShadow: "0px 0px 10px 0px rgba(0,0,0,0.15)",
-  cursor: "pointer",
-};
-
-const inputBoxStyle = {
-  borderRadius: "4px",
-  height: "3em",
-  width: "20em",
 };
 
 const addMargin = {
