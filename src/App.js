@@ -28,7 +28,6 @@ function App() {
   //a counter for the progress bar, create a global state here
   function handleProgressClick() {
     setCounter(counter + 1);
-    console.log(counter);
   }
 
   useEffect(() => {
@@ -39,34 +38,32 @@ function App() {
     <div className="App">
       <ThemeProvider>
         <Router>
-
-            <Home counter={counter} path="/" />
-            <Motivation
-              counter={counter}
-              progress={() => handleProgressClick()}
-              path="/motivation"
-            />
-            <Safety
-              counter={counter}
-              progress={() => handleProgressClick()}
-              path="/safety"
-            />
-            <Canvas
-              counter={counter}
-              path="/dragbalance"
-              progress={() => handleProgressClick()}
-            />
-            <Theory
-              counter={counter}
-              progress={() => handleProgressClick()}
-              path="/theory"
-            />
-            <Lab
-              counter={counter}
-              path="/lab"
-              progress={() => handleProgressClick()}
-            />
-
+          <Home counter={counter} path="/" />
+          <Motivation
+            counter={counter}
+            progress={() => handleProgressClick()}
+            path="/motivation"
+          />
+          <Safety
+            counter={counter}
+            progress={() => handleProgressClick()}
+            path="/safety"
+          />
+          <Canvas
+            counter={counter}
+            path="/dragbalance"
+            progress={() => handleProgressClick()}
+          />
+          <Theory
+            counter={counter}
+            progress={() => handleProgressClick()}
+            path="/theory"
+          />
+          <Lab
+            counter={counter}
+            path="/lab"
+            progress={() => handleProgressClick()}
+          />
         </Router>
         {/* <Feedback /> */}
       </ThemeProvider>

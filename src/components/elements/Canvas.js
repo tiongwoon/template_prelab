@@ -527,7 +527,7 @@ export default function Canvas(props) {
     if (questionNumber === 1) {
       if (math.round(answerOne) == "6") {
         return (
-          <div >
+          <div>
             <p>Correct!</p>
             <Button
               style={showSolutionButtonStyle}
@@ -630,7 +630,7 @@ export default function Canvas(props) {
               width={525}
               height={325}
             >
-              Please update to the latest browser to display graphic element. 
+              Please update to the latest browser to display graphic element.
             </canvas>
             {!air ? (
               <Button style={buttonStyle} onClick={onAirFlow}>
@@ -783,6 +783,9 @@ export default function Canvas(props) {
               onChange={(event) => changeHandler(event, 1)}
               className="quizInputBox"
             />
+            <MathJax.Context input="tex">
+              <MathJax.Node inline>g~~</MathJax.Node>
+            </MathJax.Context>
             <input
               type="submit"
               value="Check Answer"
@@ -800,6 +803,9 @@ export default function Canvas(props) {
               onChange={(event) => changeHandler(event, 3)}
               className="quizInputBox"
             />
+            <MathJax.Context input="tex">
+              <MathJax.Node inline>N~~</MathJax.Node>
+            </MathJax.Context>
             <input
               type="submit"
               value="Check Answer"
@@ -881,7 +887,7 @@ const buttonStyle = {
   cursor: "pointer",
   maxWidth: "525px",
   marginBottom: "5vh",
-  marginRight: "5vw"
+  marginRight: "5vw",
 };
 
 const altButtonStyle = {
@@ -900,7 +906,7 @@ const altButtonStyle = {
   cursor: "pointer",
   maxWidth: "525px",
   marginBottom: "5vh",
-  marginRight: "5vw"
+  marginRight: "5vw",
 };
 
 const showSolutionButtonStyle = {

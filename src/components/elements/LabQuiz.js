@@ -230,6 +230,10 @@ export default function LabQuiz() {
     }
   }
 
+  //for MathJax in questions
+  const densityUnits = `{kgm^{-3}~~}`;
+  const speedUnits = `{ms^{-1}~~}`;
+
   return (
     <div style={display}>
       <div className="secondaryHeaderContainer">
@@ -254,6 +258,9 @@ export default function LabQuiz() {
               onChange={changeHandlerOne}
               className="quizInputBox"
             />
+                      <MathJax.Context input="tex">
+            <MathJax.Node inline>mm~~</MathJax.Node>
+          </MathJax.Context>
             <input
               type="submit"
               value="Check Answer"
@@ -278,6 +285,9 @@ export default function LabQuiz() {
               onChange={changeHandlerTwo}
               className="quizInputBox"
             />
+         <MathJax.Context input="tex">
+            <MathJax.Node inline>mm~~</MathJax.Node>
+          </MathJax.Context>
             <input
               type="submit"
               value="Check Answer"
@@ -301,6 +311,9 @@ export default function LabQuiz() {
               onChange={changeHandlerThree}
               className="quizInputBox"
             />
+                                  <MathJax.Context input="tex">
+            <MathJax.Node inline>Pa~~</MathJax.Node>
+          </MathJax.Context>
             <input
               type="submit"
               value="Check Answer"
@@ -325,6 +338,9 @@ export default function LabQuiz() {
               onChange={changeHandlerFour}
               className="quizInputBox"
             />
+                                  <MathJax.Context input="tex">
+            <MathJax.Node inline>{densityUnits}</MathJax.Node>
+          </MathJax.Context>
             <input
               type="submit"
               value="Check Answer"
@@ -349,6 +365,9 @@ export default function LabQuiz() {
               onChange={changeHandlerFive}
               className="quizInputBox"
             />
+                                              <MathJax.Context input="tex">
+            <MathJax.Node inline>{speedUnits}</MathJax.Node>
+          </MathJax.Context>
             <input
               type="submit"
               value="Check Answer"

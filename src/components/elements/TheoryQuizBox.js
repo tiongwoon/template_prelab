@@ -218,9 +218,9 @@ export default function TheoryQuizBox() {
     <div>
       <div className="textArea">
         In this section, we will explore some theories required for you to
-        understand the lab. Below are 2 questions to help you strengthen your conceptual
-        understanding.
-    </div>
+        understand the lab. Below are 2 questions to help you strengthen your
+        conceptual understanding.
+      </div>
 
       <div style={containerForQuizHeader}>
         <div className="secondaryHeader">Exercises</div>
@@ -228,33 +228,31 @@ export default function TheoryQuizBox() {
         <br></br>
         <p className="textAreaFloating">
           1. In this lab, we will be using mass and momentum conservation to
-          derive drag force. You can refer to the content starting from page 69 in the ME1
-          notes to refresh your understanding. Please revisit the 'Submarine
-          Question', which is replicated in your previous and current tutorial
-          sheets as below:
+          derive drag force. You can refer to the content starting from page 69
+          in the ME1 notes to refresh your understanding. Please revisit the
+          'Submarine Question', which is replicated in your previous and current
+          tutorial sheets as below:
           <br></br>
           <br></br>
           &emsp; a. ME1 Fluid Mechanics 1 Tutorial Sheet 9 Question 2 (Please
           note the difference in frame of reference will result in different
-          representation of wake velocity profile. ie. Fixed frame, {" "}
+          representation of wake velocity profile. ie. Fixed frame,{" "}
           <MathJax.Context input="tex">
             <MathJax.Node inline>u</MathJax.Node>
-          </MathJax.Context>
-          {" "}is maximum
-          at the axis and zero at {" "}
-          <MathJax.Context input="tex">
-            <MathJax.Node inline>r=R</MathJax.Node>
-          </MathJax.Context>. 
-          {" "}Moving frame with the submarine, {" "}
-          <MathJax.Context input="tex">
-            <MathJax.Node inline>u</MathJax.Node>
-          </MathJax.Context> 
-          {" "}is
-          zero at the axis and maximum at{" "} 
+          </MathJax.Context>{" "}
+          is maximum at the axis and zero at{" "}
           <MathJax.Context input="tex">
             <MathJax.Node inline>r=R</MathJax.Node>
           </MathJax.Context>
-          {" "}.)
+          . Moving frame with the submarine,{" "}
+          <MathJax.Context input="tex">
+            <MathJax.Node inline>u</MathJax.Node>
+          </MathJax.Context>{" "}
+          is zero at the axis and maximum at{" "}
+          <MathJax.Context input="tex">
+            <MathJax.Node inline>r=R</MathJax.Node>
+          </MathJax.Context>{" "}
+          .)
           <br></br>
           <br></br>
           &emsp; b. ME2 Fluid Mechanics 2 Tutorial Sheet 1 Question 3.
@@ -286,6 +284,9 @@ export default function TheoryQuizBox() {
               onChange={changeHandlerOne}
               className="quizInputBox"
             />
+            <MathJax.Context input="tex">
+              <MathJax.Node inline>N ~~</MathJax.Node>
+            </MathJax.Context>
             <input
               type="submit"
               value="Check Answer"
