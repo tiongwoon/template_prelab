@@ -17,23 +17,36 @@ export default function Home(props) {
         <Header name="Home" />
 
         <div style={introContainer}>
-          <div className="secondaryHeader">ME2 Fluid Mechanics - Drag Lab Preparation</div>
-          <p className="textAreaFloating">
-            This website will help you prepare adequately for the Fluid Mechanics Drag Lab.
-            You can keep track of your progress with the progress bar at the
-            navigation column on the left of the page. Make sure to click the
-            'Complete and Proceed' button at the bottom of every page to save
-            your progress and be directed to the next section. You can either
-            follow the chronological order from top to bottom of the sections in
-            the navigation bar on the left or you can direct your own learning
-            and choose which section you want to explore. 
-            <p>The lab preparation
-            material is broken down to 5 distinct sections as below, with each
-            providing key ideas to familiarise yourself with before attending
-            the lab session. Finally, information on your tasks in the lab and
-            the next steps after the lab are detailed as below.
+          <div className="secondaryHeader">
+            ME2 Fluid Mechanics - Drag Lab Preparation
+          </div>
+          <article className="textAreaFloating">
+            <p>
+            This website will help you prepare adequately for the Fluid
+            Mechanics Drag Lab. You can keep track of your progress with the
+            progress bar at the navigation column on the left of the page. Make
+            sure to click the 'Complete and Proceed' button at the bottom of
+            every page to save your progress and be directed to the next
+            section. You can either follow the chronological order from top to
+            bottom of the sections in the navigation bar on the left or you can
+            direct your own learning and choose which section you want to
+            explore.
+            </p><br></br>
+            <p>
+              The lab preparation material is broken down to 5 distinct sections
+              as below, with each providing key ideas to familiarise yourself
+              with before attending the lab session. Finally, information on
+              your tasks in the lab and the next steps after the lab are
+              detailed as below.
+            </p><br></br>
+            <p>
+              This preparation should take <strong>around 30 minutes to complete</strong>, but
+              will vary depending on how long you take to solve the quiz. As
+              such, don't spend too long on getting the answer right, just make
+              sure you understand the techniques as they will come in handy for
+              the lab.
             </p>
-          </p>
+          </article>
         </div>
         <SectionCards />
 
