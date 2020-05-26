@@ -51,7 +51,7 @@ export default function ProgressButton(props) {
              navigate(`/${indices[index + 1]}`)
          }
      } else {
-         navigate('/')
+         navigate('/#tasks')
      }
  }
  

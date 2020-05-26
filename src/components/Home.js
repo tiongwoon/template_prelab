@@ -38,7 +38,7 @@ export default function Home(props) {
         <SectionCards />
 
         <div style={taskContainer}>
-          <div style={taskStyle}>
+          <div id="tasks" style={taskStyle}>
             <span style={{ fontWeight: "900", fontSize: "1.5em" }}>
               Your Task!
             </span>
