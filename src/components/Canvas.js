@@ -522,7 +522,7 @@ export default function Canvas(props) {
       if (math.round(answerOne) === 6) {
         return (
           <div>
-            <p>Correct!</p>
+            <p style={{ color: "#66A40A" }}>Correct!</p>
             <Button
               style={showSolutionButtonStyle}
               onClick={() => handleToggle(1)}
@@ -538,7 +538,7 @@ export default function Canvas(props) {
       } else {
         return (
           <div>
-            <p>Wrong, try again.</p>
+            <p style={{ color: "#DD2501" }}>Wrong, try again.</p>
             <Button
               style={showSolutionButtonStyle}
               onClick={() => handleToggle(1)}
@@ -556,11 +556,11 @@ export default function Canvas(props) {
       //this is question number 3, drag coefficient
       return (
         <div>
-          <p>
-            {math.round(answerTwo, 2) === 0.28
-              ? "Correct"
-              : "Wrong, try again."}
-          </p>
+          {math.round(answerTwo, 2) === 0.28 ? (
+            <p style={{ color: "#66A40A" }}>Correct</p>
+          ) : (
+            <p style={{ color: "#DD2501" }}>Wrong, try again.</p>
+          )}
           <Button
             style={showSolutionButtonStyle}
             onClick={() => handleToggle(2)}
@@ -576,11 +576,12 @@ export default function Canvas(props) {
     } else if (questionNumber === 3) {
       return (
         <div>
-          <p>
-            {math.round(answerThree, 3) === 0.059
-              ? "Correct"
-              : "Wrong, try again."}
-          </p>
+          {math.round(answerThree, 3) === 0.059 ? (
+            <p style={{ color: "#66A40A" }}>Correct</p>
+          ) : (
+            <p style={{ color: "#DD2501" }}>Wrong, try again.</p>
+          )}
+
           <Button
             style={showSolutionButtonStyle}
             onClick={() => handleToggle(3)}
@@ -771,8 +772,8 @@ export default function Canvas(props) {
           <ol>
             <li>
               <div style={addMargin}>
-                Can you identify the right amount of mass, in g, to add in
-                order to balance the drag force?
+                Can you identify the right amount of mass, in g, to add in order
+                to balance the drag force?
               </div>
               <form onSubmit={(event) => submitHandler(event, 1)}>
                 <input
@@ -818,9 +819,9 @@ export default function Canvas(props) {
 
             <li>
               <div style={addMargin}>
-                What is the drag coefficient of the disc? (Compare its value
-                to the one in the Theory section. What could be the reason they
-                are different?)
+                What is the drag coefficient of the disc? (Compare its value to
+                the one in the Theory section. What could be the reason they are
+                different?)
               </div>
               <form onSubmit={(event) => submitHandler(event, 2)}>
                 <input
@@ -842,12 +843,12 @@ export default function Canvas(props) {
         </div>
 
         {completeDragBalanceSection === "notdone" ? (
-            <ProgressButton
-              progress={props.progress}
-              counter={props.counter}
-              toggle={turnOffDragBalanceButton}
-              sectionName="dragbalance"
-            />
+          <ProgressButton
+            progress={props.progress}
+            counter={props.counter}
+            toggle={turnOffDragBalanceButton}
+            sectionName="dragbalance"
+          />
         ) : (
           <div className="sectionCompletedContainer">
             <div className="sectionCompleted">

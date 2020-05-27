@@ -197,7 +197,7 @@ export default function LabQuiz() {
       return (
         <div>
           <p style={{ color: "#66A40A" }}>Correct!</p>
-          <br></br>
+          
           <Button
             style={showSolutionButtonStyle}
             onClick={() => handleToggle(questionNumber)}
@@ -214,7 +214,7 @@ export default function LabQuiz() {
       return (
         <div>
           <p style={{ color: "#DD2501" }}>Wrong, Try again.</p>
-          <br></br>
+          
           <Button
             style={showSolutionButtonStyle}
             onClick={() => handleToggle(questionNumber)}
