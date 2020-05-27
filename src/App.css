@@ -314,6 +314,9 @@ a:link {
 
 /**Styles for smartphone*/
 @media (max-width: 1024px) {
+  .feedbackBox {
+    display: none;
+  }
   /**for the menu*/
   .dropdownContainer {
     display: inline-block;
