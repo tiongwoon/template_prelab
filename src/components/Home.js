@@ -74,7 +74,7 @@ export default function Home(props) {
           </div>
           <div style={taskStyle}>
             <span style={{ fontWeight: "900", fontSize: "1.5em" }}>
-              Next Steps
+              After the Lab
             </span>
             <br></br>
             <br></br>
