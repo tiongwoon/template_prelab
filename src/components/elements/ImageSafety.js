@@ -1,7 +1,7 @@
 import React from 'react';
 import ImageMapper from 'react-image-mapper';
 
-export default function ImageLabSafety(props) {
+export default function ImageSafety(props) {
     return (
             <ImageMapper 
                 src={require("../../assets/labpic.jpeg")} 

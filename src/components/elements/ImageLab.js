@@ -20,9 +20,5 @@ const container = {
     position: "relative",
     left: "0",
     top: "0",
-    //display: "inline-block"   
+
 }
-
-
-
-//area => props.showModal(area)

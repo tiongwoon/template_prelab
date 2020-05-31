@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import ProgressButton from "./elements/ProgressButton";
-import Header from "./elements/Header";
-import ImageLabSafety from "./elements/ImageLabSafety";
-import Sidebar from "./elements/Sidebar";
+import ProgressButton from "../elements/ProgressButton";
+import Header from "../elements/Header";
+import ImageSafety from "../elements/ImageSafety";
+import Sidebar from "../elements/Sidebar";
 
 export default function Safety(props) {
   //to set up the hotspot
@@ -48,8 +48,7 @@ export default function Safety(props) {
       <main className="bodyWrapper">
         <Header name="Safety" />
         <section className="textArea">
-          There are 2 main safety precautions which you need to be wary of
-          during the lab.
+          Example text
           <span style={{ fontWeight: "900" }}>
             {" "}
             In the following image of the lab, hover over the hotspot to learn
@@ -65,31 +64,15 @@ export default function Safety(props) {
           <ul>
             <li>
               <p>
-                <strong>DO NOT stand near the fan for extended period.</strong>{" "}
-                Ear protection is provided but optional.
-              </p>
-            </li>
-            <li>
-              <p>
-                This is an open section Wind Tunnel, so{" "}
-                <strong>DO NOT walk through the fast air stream.</strong> {""}Walk
-                around the other way instead.
-              </p>
-            </li>
-
-            <li>
-              <p>
-                <strong>
-                  DO NOT release loose object into the air stream.
-                </strong>{" "}
-                Turn off the air stream before modifying the rig.
+                <strong>Example</strong>{" "}
+                Example text
               </p>
             </li>
           </ul>
         </section>
 
         <figure style={container}>
-          <ImageLabSafety
+          <ImageSafety
             map={MAP}
             enterArea={enterArea}
             leaveArea={leaveArea}
@@ -149,34 +132,16 @@ const precautions = {
   description: [
     "dummy",
     <div>
-      <img
-        style={{ inlineSize: "1.75em", paddingRight: "0.5em" }}
-        src={require("../assets/shout.svg")}
-        alt=""
-      />
-      <span style={{ fontWeight: "900", fontSize: "1.5em" }}>Noise</span>{" "}
-      <p>DO NOT stand near the fan for extended period. </p>
-      <p> Ear protection is provided but optional.</p>
+      <span style={{ fontWeight: "900", fontSize: "1.5em" }}>Title of precaution</span>{" "}
+      <p>Description</p>
     </div>,
 
     <div>
-      <img
-        style={{ inlineSize: "1.75em", paddingRight: "0.5em" }}
-        src={require("../assets/fan.svg")}
-        alt=""
-      />
       <span style={{ fontWeight: "900", fontSize: "1.5em" }}>
         High Speed Air
       </span>
       <p>
-        This is an open section Wind Tunnel, so DO NOT walk through the fast air
-        stream.
-      </p>
-      <p>Walk around the other way instead.</p>
-      <br></br>
-      <p>
-        DO NOT release loose object into the air stream. Turn off the air stream
-        before modifying the rig.
+      Example
       </p>
     </div>,
   ],

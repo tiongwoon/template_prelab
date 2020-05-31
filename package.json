@@ -1,5 +1,5 @@
 {
-  "name": "prelab",
+  "name": "template_prelab",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -21,7 +21,6 @@
     "react-mathjax2": "0.0.2",
     "react-scripts": "3.3.0",
     "react-slick": "^0.25.2",
-    "simple-react-lightbox": "^2.0.5",
     "styled-components": "^4.4.1"
   },
   "scripts": {

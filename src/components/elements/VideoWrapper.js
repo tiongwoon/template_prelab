@@ -2,12 +2,13 @@ import React from "react";
 
 export default function VideoWrapper() {
   return (
+    <>
+    <center style={{ fontWeight: "900" }}>Choose one to watch.</center>
     <section className="videoContainer">
+      {/* duplicate the code snippet below to create another video block */}
       <div className="videoBox">
         <iframe
-          title="This video about the interaction of
-              wind load and vortices with tall buildings. (Featuring London's
-              very own The Shard)"
+          title="Description of the multimedia content for accessibilty"
           width="auto"
           height="250"
           src="https://www.youtube.com/embed/tHMPR7flpf4"
@@ -15,30 +16,7 @@ export default function VideoWrapper() {
           allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen"
         ></iframe>
       </div>
-      <div className="videoBox">
-        <iframe
-          title="A video about how a wind tunnel, which we will be using in this
-              lab, is being used to test the flight of a football. Not too
-              dissimilar from our lab session with the wind tunnel, only that
-              you will be testing the flow around a disc."
-          width="auto"
-          height="250"
-          src="https://www.youtube.com/embed/9p2w5Zg52uo"
-          frameborder="0"
-          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen"
-        ></iframe>
-      </div>
-      <div className="videoBox">
-        <iframe
-          title="A video showing Lewis Hamilton visiting the Mercedes wind tunnel and how it is being used for testing the fluid flow
-              around the car."
-          width="auto"
-          height="250"
-          src="https://www.youtube.com/embed/2pzDtT4BKIg"
-          frameborder="0"
-          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen"
-        ></iframe>
-      </div>
     </section>
+    </>
   );
 }

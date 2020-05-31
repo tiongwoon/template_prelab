@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 
+//Note: this component is written as a class component, while most other is written in functional component
+//No particular reason so feel free to refactor
+
 export class Header extends Component {
     render() {
         return (
@@ -12,7 +15,6 @@ export class Header extends Component {
     }
 }
 
-//name={Lab} to pass in prop
 
 const topBar = {
     height: "15vh",

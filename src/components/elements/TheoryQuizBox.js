@@ -5,22 +5,6 @@ import MathJax from "react-mathjax2";
 import * as math from "mathjs";
 
 export default function TheoryQuizBox() {
-  //const maxSpeed = 20;
-  //to generate and calculate answer for wake profile
-  // const mean = math.randomInt(10, 17);
-  // const std = math.randomInt(2, 8);
-  // const normDist = new NormalDistribution(mean, std);
-  // const v1 = normDist.pdf(mean);
-  // const v4 = normDist.pdf(std * 2);
-  // const r2 = std / 3 + mean;
-  // const r3 = (std / 3) * 2 + mean;
-  // const v2 = normDist.pdf(r2);
-  // const v3 = normDist.pdf(r3);
-  // const V1 = math.round(maxSpeed - maxSpeed * v1);
-  // const V4 = math.round(maxSpeed - maxSpeed * v4);
-  // const V2 = math.round(maxSpeed - maxSpeed * v2);
-  // const V3 = math.round(maxSpeed - maxSpeed * v3);
-
   //for the collapse
   const [showOne, setShowOne] = useState(false);
   const [showTwo, setShowTwo] = useState(false);
@@ -75,14 +59,6 @@ export default function TheoryQuizBox() {
     let answerState = [answerOne, answerTwo];
     let userAnswer = JSON.parse(answerState[questionNumber - 1]);
 
-    const lineOne = `{\\rho  U_{0} \\pi  \\mathrm{H^{2}} ~ = ~ \\int\\limits_{A}\\rho  \\overrightarrow{u} \\cdot  \\overrightarrow{dA} } `;
-    const lineTwo = `{= \\rho ~ \\int\\limits_{0}^{R}u(r) \\cdot2 \\pi r ~ dr}`;
-    const lineThree = `{F_\\mathrm{drag} ~=~U_0 [~\\rho ~ \\int\\limits_{0}^{R} u(r) \\cdot 2 \\pi r ~ dr~] ~ - ~ \\rho \\int\\limits_{0}^{R} u(r)^{2} \\cdot 2\\pi r ~ dr} `;
-    const lineFour = `{F_\\mathrm{drag} ~=~ 2 \\pi \\rho \\int\\limits_{0}^{R} u \\cdot (U_{0}-u) \\cdot r ~ dr}`;
-    const lineFive = `{\\int\\limits_{0}^{R} u \\cdot (U_{0}-u) \\cdot r ~ dr~~ \\mathrm{is ~approximated~ to}~~ \\frac{\\Delta x}{2}[y_{1} + 2(y_{2}+y_{3}) + y_{4}]}`;
-    const lineSix = `{ \\mathrm{where} ~~ y=u(r) \\cdot (U_{0}-u(r)) \\cdot r}`;
-    const lineSeven = `{=~ 0.0543~N~ (3 s.f.)}`;
-
     const solutionTwo = `{F_\\mathrm{{drag}} ~=~ C_\\mathrm{D} \\times \\frac{\\rho {v^2}}{2} \\times A}`;
     const solutionTwo_two = `{C_\\mathrm{D} = 0.255}`;
 
@@ -92,58 +68,13 @@ export default function TheoryQuizBox() {
 
       working: [
         <div>
-          Using a streamline control volume, we eliminate the need to consider
-          mass flow out via the side. But we need to define the radius of the
-          streamline inlet. We use mass balance to find.
-          <MathJax.Context input="tex">
-            <MathJax.Node>{lineOne}</MathJax.Node>
-          </MathJax.Context>
-          <br></br>Using annular differential elements, the right hand side
-          becomes<br></br>
-          <MathJax.Context input="tex">
-            <center>
-              {" "}
-              <MathJax.Node>{lineTwo}</MathJax.Node>
-            </center>
-          </MathJax.Context>
-          <br></br>We now have an expression for H. Then, we use momentum
-          balance to find the drag force. Substituting the expression for H into
-          the equation, we have
-          <MathJax.Context input="tex">
-            <center>
-              {" "}
-              <MathJax.Node>{lineThree}</MathJax.Node>
-            </center>
-          </MathJax.Context>
-          Which simplifies to <br></br>
-          <MathJax.Context input="tex">
-            <MathJax.Node>{lineFour}</MathJax.Node>
-          </MathJax.Context>{" "}
-          <br></br> Since we are given the data, we can use numerical integral
-          methods to compute the integral, for this solution we will use
-          trapezoid rule to compute. But you can also use other techniques such
-          as the rectangule approximation.
-          <MathJax.Context input="tex">
-            <center>
-              {" "}
-              <MathJax.Node>{lineFive}</MathJax.Node>{" "}
-            </center>
-          </MathJax.Context>
-          <MathJax.Context input="tex">
-            <center>
-              {" "}
-              <MathJax.Node>{lineSix}</MathJax.Node>{" "}
-            </center>
-          </MathJax.Context>
-          <MathJax.Context input="tex">
-            <center>
-              {" "}
-              <MathJax.Node>{lineSeven}</MathJax.Node>{" "}
-            </center>
-          </MathJax.Context>
+          <p>
+            Working solution one.
+          </p>
         </div>,
 
         <div>
+          <p>Example</p>
           <MathJax.Context input="tex">
             <MathJax.Node>{solutionTwo}</MathJax.Node>
           </MathJax.Context>
@@ -197,7 +128,6 @@ export default function TheoryQuizBox() {
     }
   }
 
-  const dragCoefficient = `{C_\\mathrm{D}}`;
 
   return (
     <section>
@@ -213,37 +143,14 @@ export default function TheoryQuizBox() {
         <br></br>
         <ol className="textAreaFloating">
           <li>
-            In this lab, we will be using mass and momentum conservation to
-            derive drag force. You can refer to the content starting from page
-            69 in the ME1 notes to refresh your understanding. Please revisit
-            the 'Submarine Question', which is replicated in your previous and
-            current tutorial sheets as below:
+            Example Text with link button to Blackboard. Used when need students to revisit certain tutorial sheet questions etc.
             <br></br>
             <br></br>
             <ul>
               <li>
                 <strong>
-                  ME1 Fluid Mechanics 1 Tutorial Sheet 9 Question 2{" "}
+                  ME1 Fluid Mechanics 1 Tutorial Sheet 9 Question 2
                 </strong>
-                (Please note the difference in frame of reference will result in
-                different representation of wake velocity profile. ie. Fixed
-                frame,{" "}
-                <MathJax.Context input="tex">
-                  <MathJax.Node inline>u</MathJax.Node>
-                </MathJax.Context>{" "}
-                is maximum at the axis and zero at{" "}
-                <MathJax.Context input="tex">
-                  <MathJax.Node inline>r=R</MathJax.Node>
-                </MathJax.Context>
-                . Moving frame with the submarine,{" "}
-                <MathJax.Context input="tex">
-                  <MathJax.Node inline>u</MathJax.Node>
-                </MathJax.Context>{" "}
-                is zero at the axis and maximum at{" "}
-                <MathJax.Context input="tex">
-                  <MathJax.Node inline>r=R</MathJax.Node>
-                </MathJax.Context>{" "}
-                .)
               </li>
               <li>
                 <strong>
@@ -265,24 +172,16 @@ export default function TheoryQuizBox() {
             <br></br>
           </li>
           <li>
-            For the example measured wake profile below, estimate the drag on
-            the object assuming atmospheric pressure everywhere.
+            Question One 
             <img
               style={imageStyle}
               src={require("../../assets/streamline.jpg")}
               alt="A streamline control volume drawn around an object."
             />
             <br></br>
-            <img
-              className="tableImage"
-              src={require("../../assets/table.jpg")}
-              alt="A table with data values for radial distance from axis and its corresponding airflow speed."
-            />
-            <br></br>
             <form onSubmit={submitHandlerOne}>
               <label style={{ display: "block", paddingTop: "1em" }}>
-                Estimate the drag force on the object assuming atmospheric
-                pressure everywhere.
+                Question One 
               </label>
               <input
                 name="answer"
@@ -292,7 +191,7 @@ export default function TheoryQuizBox() {
                 className="quizInputBox"
               />
               <MathJax.Context input="tex">
-                <MathJax.Node inline>N ~~</MathJax.Node>
+                <MathJax.Node inline>Units ~~</MathJax.Node>
               </MathJax.Context>
               <input
                 type="submit"
@@ -312,9 +211,7 @@ export default function TheoryQuizBox() {
               Hint
             </Button>
             <Collapse isOpen={showHint} marginTop="0.7em">
-              This question is similar to question 1. The only difference here
-              is that data is given for the velocity. So, you need to think of a
-              way to find the integral, or in other words, the sum.
+              Hint Text
             </Collapse>
             {answerOne ? Answer(1) : null}
             <br></br>
@@ -322,12 +219,7 @@ export default function TheoryQuizBox() {
           <li>
             <form onSubmit={submitHandlerTwo}>
               <label for="answer" style={{ display: "block" }}>
-                Given that the object has a radius of 28mm, using the drag force
-                calculated from question 2, work out the drag coefficient,{" "}
-                <MathJax.Context input="tex">
-                  <MathJax.Node inline>{dragCoefficient}</MathJax.Node>
-                </MathJax.Context>
-                .
+                Question Two
               </label>
               <input
                 name="answer"

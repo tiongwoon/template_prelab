@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import { Router } from "@reach/router";
-import Motivation from "./components/Motivation";
-import Theory from "./components/Theory";
-import Safety from "./components/Safety";
-import Home from "./components/Home";
+import Motivation from "./components/pages/Motivation";
+import Theory from "./components/pages/Theory";
+import Safety from "./components/pages/Safety";
+import Home from "./components/pages/Home";
 import {  ThemeProvider } from "@chakra-ui/core";
-import Lab from "./components/Lab";
-import Canvas from "./components/Canvas";
+import Lab from "./components/pages/Lab";
+import Simulation from "./components/pages/Simulation";
 import Feedback from "./components/elements/Feedback";
 
 // const customTheme = {
@@ -38,6 +38,7 @@ function App() {
     <div className="App">
       <ThemeProvider>
         <Router>
+          {/* simply remove the code snippet within the <> tag if wish to remove that section */}
           <Home counter={counter} path="/" />
           <Motivation
             counter={counter}
@@ -49,9 +50,9 @@ function App() {
             progress={() => handleProgressClick()}
             path="/safety"
           />
-          <Canvas
+          <Simulation
             counter={counter}
-            path="/dragbalance"
+            path="/simulation"
             progress={() => handleProgressClick()}
           />
           <Theory
@@ -65,7 +66,7 @@ function App() {
             progress={() => handleProgressClick()}
           />
         </Router>
-         <Feedback />
+        <Feedback />
       </ThemeProvider>
     </div>
   );

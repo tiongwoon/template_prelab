@@ -30,7 +30,7 @@ export default function Sidebar(props) {
         return "hoverBuddy";
       }
     } else if (order === 5) {
-      if (props.name === "Drag Balance") {
+      if (props.name === "Simulation") {
         return "hoverBuddy active";
       } else {
         return "hoverBuddy";
@@ -107,7 +107,7 @@ export default function Sidebar(props) {
                 The Lab
               </li>
             </a>
-            <a href="/dragbalance">
+            <a href="/simulation">
               <li className={className(5)}>
                 <img
                   style={{ inlineSize: "1.6em", paddingRight: "0.8em" }}
@@ -115,7 +115,7 @@ export default function Sidebar(props) {
                   alt=""
                   aria-hidden="true"
                 />
-                Drag Balance
+                Simulation
               </li>
             </a>
             <a href="/safety">
@@ -183,13 +183,13 @@ export default function Sidebar(props) {
           />
           The Lab
         </a>
-        <a href="/dragbalance" className={className(5)}>
+        <a href="/simulation" className={className(5)}>
           <img
             style={{ inlineSize: "1.6em", paddingRight: "0.8em" }}
             src={require("../../assets/libra.svg")}
             alt=""
           />
-          Drag Balance
+         Simulation
         </a>
         <a href="/safety" className={className(6)}>
           <img

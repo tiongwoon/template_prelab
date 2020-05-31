@@ -6,8 +6,8 @@ function SectionCards() {
   const isTheoryDone =
     localStorage.getItem("completeTheorySection") || "notdone";
   const isLabDone = localStorage.getItem("completeLabSection") || "notdone";
-  const isDragBalanceDone =
-    localStorage.getItem("completeDragBalanceSection") || "notdone";
+  const isSimulationDone =
+    localStorage.getItem("completeSimulationSection") || "notdone";
   const isSafetyDone =
     localStorage.getItem("completeSafetySection") || "notdone";
 
@@ -16,7 +16,7 @@ function SectionCards() {
       <div className="sectionCard">
         <h2 style={titleStyle}>Motivation</h2>
         <h3 style={descriptionStyle}>
-          Videos on how the analysis in the lab is applied in the industry.
+        Description
         </h3>
         <a href="/motivation">
           {isMotivationDone === "notdone" ? (
@@ -28,7 +28,7 @@ function SectionCards() {
       </div>
       <div className="sectionCard">
         <h2 style={titleStyle}>Lab Equipments</h2>
-        <h3 style={descriptionStyle}>Introduction to the equipments used during the lab.</h3>
+        <h3 style={descriptionStyle}>Description</h3>
         <a href="/lab">
           {isLabDone === "notdone" ? (
             <button className="buttonForSectionCards">Start now</button>
@@ -40,7 +40,7 @@ function SectionCards() {
 
       <div className="sectionCard">
         <h2 style={titleStyle}>Theory</h2>
-        <h3 style={descriptionStyle}>Refresh some key ideas needed to understand the lab content.</h3>
+        <h3 style={descriptionStyle}>Description</h3>
         <a href="/theory">
           {isTheoryDone === "notdone" ? (
             <button className="buttonForSectionCards">Start now</button>
@@ -51,12 +51,12 @@ function SectionCards() {
       </div>
 
       <div className="sectionCard">
-        <h2 style={titleStyle}>Drag Balance</h2>
+        <h2 style={titleStyle}>Simulation</h2>
         <h3 style={descriptionStyle}>
-          A simple animation to simulate the actual workflow of the lab.
+          Description
         </h3>
         <a href="/dragbalance">
-          {isDragBalanceDone === "notdone" ? (
+          {isSimulationDone === "notdone" ? (
             <button className="buttonForSectionCards">Start now</button>
           ) : (
             <button className="buttonForSectionCards">Do It Again</button>
@@ -66,7 +66,7 @@ function SectionCards() {
 
       <div className="sectionCard">
         <h2 style={titleStyle}>Safety</h2>
-        <h3 style={descriptionStyle}>Main precautions to take during the lab.</h3>
+        <h3 style={descriptionStyle}>Description</h3>
         <a href="/safety">
           {isSafetyDone === "notdone" ? (
             <button className="buttonForSectionCards">Start now</button>

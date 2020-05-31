@@ -1,3 +1,44 @@
+This repository contains the template code to create a learning object for lab preparation. 
+
+ The ‘src’ folder contains all the code to be edited. One who intends to create a new learning object for lab preparation can simply clone the repository from the link above and make the necessary changes to each section as below. The person should have some basic knowledge of HTML, CSS, and JavaScript and with this, he or she will be able to grasp the concept of React.JS and can thus work with this set of code.
+
+ run git clone 'URL' to clone the repository to a local server. 
+
+Recommended changes to make for each section. In brackets are the sub-components found in the elements folder.:
+1.	Home 
+I.	Edit the main description
+II.	Edit the text in the ‘Your Tasks’ and ‘After the Lab’ sections as desired using the pre-set format 
+III.	Remove any redundant sections 
+2.	Motivation
+I.	(Video Wrapper) Edit the embedded links of the YouTube videos. Refer to this link: https://support.google.com/youtube/answer/171780?hl=en-GB
+II.	(Video Wrapper) Fill in the alternative text for the videos.
+III.	Edit the main description 
+3.	Theory
+I.	Edit the main description. For example, to include explanations.
+II.	(Theory Quiz Box) Duplicate or remove the code blocks to add quiz questions as desired
+4.	Lab 
+I.	Add or remove images in the gallery by duplicating the code snippets
+II.	(Image Lab) For the image map, edit the main image
+III.	For the image map (image with clickable spots which will open a content box with image and descriptions of the object), edit equipment name, image, description, the associated coordinates
+IV.	(Lab Quiz) Duplicate or remove the code blocks to add quiz questions as desired
+5.	Simulation
+I.	Edit the main description
+II.	As mentioned above, the simulation will need to be created specific to the lab. It is recommended to use the P5.js library (https://p5js.org/).
+III.	Duplicate or remove the code blocks to add quiz questions as desired
+6.	Safety
+I.	Edit the main description
+II.	(Image Safety) For the image map, edit the main image
+III.	For the image map, edit precaution details and the associated coordinates of each precaution, determined by the location of the hazard in the image
+Additional notes:
+The steps above will create a learning object with identical layout to the Drag Lab’s website. If one would like to change the layout, several general components with no position constraints are provided in the elements folder:
+•	General Quiz Box
+•	Text
+Wrap these components around a container and position it using CSS and class name selectors build new layouts. 
+
+
+
+The content below are irrelevant to the learning object.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
